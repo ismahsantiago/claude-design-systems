@@ -29,6 +29,8 @@ export function buildCoverageTree(DS) {
       note: 'No card required.',
       layout: 'split',
       media: h('div', null, 'media'),
+      height: 'screen',
+      background: h('div', null, 'bg'),
     }),
     h(DS.LogoCloud, { caption: 'Trusted by', logos: [h('span', null, 'Vertex')] }),
     h(DS.FeatureGrid, {
@@ -38,6 +40,15 @@ export function buildCoverageTree(DS) {
       variant: 'card',
       tone: 'sunken',
       features: [{ icon: h('span', null, '*'), title: 'One', description: 'Desc.' }],
+    }),
+    h(DS.MediaShowcase, {
+      title: 'Showcase',
+      ratio: 'square',
+      columns: 2,
+      items: [
+        { media: h('div', null, 'still'), title: 'Tile', meta: '00:12' },
+        { videoSrc: 'clip.mp4', posterSrc: 'poster.jpg', title: 'Clip', href: '#' },
+      ],
     }),
     h(DS.Testimonials, {
       title: 'Quotes',

@@ -1,3 +1,40 @@
+/*
+ * A screen-height hero centers its content vertically rather than sitting at
+ * the top of a tall box, which is the only reason to ask for the height.
+ */
+.ds-hero--screen {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ds-hero--has-background {
+  position: relative;
+  isolation: isolate;
+}
+
+/*
+ * The background layer sits behind the content and takes no pointer events, so
+ * an autoplaying video or a gradient can never swallow a click on the actions.
+ */
+.ds-hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ds-hero__background img,
+.ds-hero__background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .ds-hero__headline {
   margin: 0;
   font-family: var(--ds-font-display);

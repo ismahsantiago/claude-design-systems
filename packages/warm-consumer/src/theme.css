@@ -101,6 +101,12 @@
   --ds-duration-md: 260ms;
   --ds-ease: cubic-bezier(0.34, 1.2, 0.4, 1);
 
+  /* ---- Gradients: a gentle warm wash, in keeping with the soft shadows. ---- */
+  --ds-gradient-accent: linear-gradient(135deg, #e08a5f 0%, #c2603a 100%);
+  --ds-gradient-warm: linear-gradient(135deg, #f0b27a 0%, #c2603a 100%);
+
+  --ds-shadow-glow: 0 0 0 6px rgb(217 138 99 / 0.18);
+
   /* ---- Controls ---- */
   --ds-control-height-sm: 34px;
   --ds-control-height-md: 44px;

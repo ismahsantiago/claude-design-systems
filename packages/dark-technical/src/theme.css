@@ -104,6 +104,12 @@
   --ds-duration-md: 140ms;
   --ds-ease: cubic-bezier(0.4, 0, 0.2, 1);
 
+  /* ---- Gradients: restrained; fills and hairlines, never decoration. ---- */
+  --ds-gradient-accent: linear-gradient(135deg, #0d7f92 0%, #17b8d1 100%);
+  --ds-gradient-warm: linear-gradient(135deg, #17b8d1 0%, #2bb673 100%);
+
+  --ds-shadow-glow: 0 0 12px rgb(23 184 209 / 0.35);
+
   /* ---- Controls ---- */
   --ds-control-height-sm: 26px;
   --ds-control-height-md: 32px;

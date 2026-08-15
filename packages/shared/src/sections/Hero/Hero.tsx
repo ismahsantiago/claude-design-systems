@@ -18,8 +18,16 @@ export interface HeroProps {
   note?: ReactNode;
   /** Screenshot, illustration or video, shown beside or below the copy. */
   media?: ReactNode;
+  /**
+   * Full-bleed layer painted behind everything — video, image or gradient.
+   * It is clipped to the hero and ignores pointer events, so it can be any
+   * markup without swallowing clicks on the actions.
+   */
+  background?: ReactNode;
   /** `center` stacks and centers; `split` puts copy and media side by side. */
   layout?: 'center' | 'split';
+  /** `screen` fills the viewport, which is the point of a media-first hero. */
+  height?: 'auto' | 'screen';
   tone?: 'default' | 'sunken' | 'accent' | 'inverted';
   id?: string;
   className?: string;
@@ -33,7 +41,9 @@ export function Hero({
   actions,
   note,
   media,
+  background,
   layout = 'center',
+  height = 'auto',
   tone = 'default',
   id,
   className,
@@ -63,8 +73,19 @@ export function Hero({
       id={id}
       tone={tone}
       spacing="loose"
-      className={cx('ds-hero', `ds-hero--${layout}`, className)}
+      className={cx(
+        'ds-hero',
+        `ds-hero--${layout}`,
+        height === 'screen' && 'ds-hero--screen',
+        background && 'ds-hero--has-background',
+        className,
+      )}
     >
+      {background && (
+        <div className="ds-hero__background" aria-hidden="true">
+          {background}
+        </div>
+      )}
       {layout === 'split' ? (
         <div className="ds-hero__split">
           {copy}

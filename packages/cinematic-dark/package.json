@@ -1,0 +1,38 @@
+{
+  "name": "@ds/cinematic-dark",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Film-grade dark UI, oversized display type, gradient accents, media-first.",
+  "designSystem": {
+    "title": "Cinematic Dark",
+    "tagline": "Film-grade dark UI, oversized display type, gradient accents, media-first."
+  },
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@ds/shared": "*"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  }
+}

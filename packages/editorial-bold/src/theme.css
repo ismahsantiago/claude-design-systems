@@ -101,6 +101,12 @@
   --ds-duration-md: 160ms;
   --ds-ease: cubic-bezier(0.2, 0, 0, 1);
 
+  /* ---- Gradients: none. A flat system answers flat. ---- */
+  --ds-gradient-accent: linear-gradient(135deg, #d5321f 0%, #d5321f 100%);
+  --ds-gradient-warm: linear-gradient(135deg, #14120f 0%, #14120f 100%);
+
+  --ds-shadow-glow: none;
+
   /* ---- Controls ---- */
   --ds-control-height-sm: 32px;
   --ds-control-height-md: 44px;

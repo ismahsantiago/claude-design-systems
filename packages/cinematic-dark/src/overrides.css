@@ -1,0 +1,151 @@
+/**
+ * Rules only this system needs.
+ *
+ * Everything here is something the token contract genuinely cannot express —
+ * not a value, but a different rule. Each block says why it is not a token, so
+ * that the next person can tell a real exception from laziness.
+ *
+ * Loaded after the theme and after the shared component styles, so these win
+ * without needing `!important`.
+ */
+
+/* ---------------------------------------------------------------------------
+ * Pill buttons.
+ * Not a token: `--ds-radius-md` is shared by buttons and inputs, and this
+ * system wants pill buttons (999px) with 10px inputs. One token cannot answer
+ * both, and splitting the radius scale per component would bloat the contract
+ * for one system's benefit.
+ * ------------------------------------------------------------------------- */
+.ds-button {
+  border-radius: var(--ds-radius-full);
+  padding-inline: var(--ds-space-xl);
+  font-weight: var(--ds-weight-medium);
+  transition:
+    transform var(--ds-duration-fast) var(--ds-ease),
+    background-color var(--ds-duration-fast) var(--ds-ease),
+    border-color var(--ds-duration-fast) var(--ds-ease),
+    box-shadow var(--ds-duration-fast) var(--ds-ease);
+}
+
+/*
+ * The one place lift is allowed. Scale is a rule, not a value, so it cannot be
+ * a token. Reduced-motion visitors get the color change without the movement.
+ */
+.ds-button:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+
+.ds-button:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-button:hover:not(:disabled),
+  .ds-button:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Secondary is a hairline outline on black, not a filled surface. */
+.ds-button--secondary {
+  background: transparent;
+  border-color: var(--ds-color-text);
+  color: var(--ds-color-text);
+}
+
+.ds-button--secondary:hover:not(:disabled) {
+  background: rgb(245 245 245 / 0.08);
+}
+
+.ds-button--primary:hover:not(:disabled) {
+  box-shadow: var(--ds-shadow-glow);
+}
+
+/* ---------------------------------------------------------------------------
+ * Gradient display type.
+ * Not a token: background-clip on text is a technique, not a value. It is
+ * applied only to the hero headline and section titles — using it on body copy
+ * would wreck legibility and antialiasing.
+ * ------------------------------------------------------------------------- */
+.ds-hero__headline,
+.ds-cta__headline {
+  background: var(--ds-gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Keeps the descenders of the clipped text from being cropped. */
+  padding-block-end: 0.08em;
+}
+
+/* ---------------------------------------------------------------------------
+ * Focus glow on inputs.
+ * Not a token: `--ds-shadow-glow` supplies the value, but attaching it to the
+ * focus state as a second ring is a rule this system alone applies.
+ * ------------------------------------------------------------------------- */
+.ds-control:focus-visible {
+  outline: 2px solid var(--ds-color-accent);
+  outline-offset: 0;
+  box-shadow: var(--ds-shadow-glow);
+  border-color: var(--ds-color-accent);
+}
+
+.ds-control {
+  background: var(--ds-color-surface-sunken);
+  border-color: var(--ds-color-border);
+}
+
+/* ---------------------------------------------------------------------------
+ * Media-first surfaces.
+ * Cards and tiles take the accent border on hover over a 300ms transition, and
+ * carry a deep shadow rather than the hairline the shared default assumes.
+ * ------------------------------------------------------------------------- */
+.ds-card,
+.ds-feature-grid--card .ds-feature {
+  transition:
+    border-color var(--ds-duration-md) var(--ds-ease),
+    box-shadow var(--ds-duration-md) var(--ds-ease);
+}
+
+.ds-card--interactive:hover,
+.ds-feature-grid--card .ds-feature:hover,
+.ds-plan--featured {
+  border-color: var(--ds-color-accent);
+}
+
+.ds-media-tile:hover .ds-media-tile__frame {
+  box-shadow: var(--ds-shadow-lg), var(--ds-shadow-glow);
+}
+
+/* ---------------------------------------------------------------------------
+ * Blur-backed nav over full-bleed media.
+ * The shared sticky nav already blurs; on a pure-black canvas it also needs to
+ * start fully transparent so the hero video runs edge to edge behind it.
+ * ------------------------------------------------------------------------- */
+.ds-nav--sticky {
+  background: rgb(0 0 0 / 0.55);
+  backdrop-filter: blur(12px);
+  border-block-end-color: rgb(245 245 245 / 0.08);
+}
+
+/* ---------------------------------------------------------------------------
+ * Monospace metadata.
+ * Captions, timestamps and technical detail read as data in this system.
+ * ------------------------------------------------------------------------- */
+.ds-section-header__eyebrow,
+.ds-plan__name,
+.ds-footer__column-title {
+  font-family: var(--ds-font-mono);
+  font-weight: var(--ds-weight-regular);
+  letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------------------------
+ * Let media breathe: the eyebrow badge is a hairline chip, not a filled pill,
+ * so it does not compete with the headline behind it.
+ * ------------------------------------------------------------------------- */
+.ds-hero .ds-badge {
+  background: transparent;
+  border: 1px solid var(--ds-color-border-strong);
+  color: var(--ds-color-text-muted);
+  font-family: var(--ds-font-mono);
+}

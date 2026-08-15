@@ -122,6 +122,12 @@
   --ds-duration-md: 200ms;
   --ds-ease: cubic-bezier(0.2, 0, 0.2, 1);
 
+  /* ---- Gradients: this system is flat; the tokens answer with one color. ---- */
+  --ds-gradient-accent: linear-gradient(135deg, #4a6fe8 0%, #4a6fe8 100%);
+  --ds-gradient-warm: linear-gradient(135deg, #3556cc 0%, #3556cc 100%);
+
+  --ds-shadow-glow: none;
+
   /* ---- controls ---- */
   --ds-control-height-sm: 30px;
   --ds-control-height-md: 38px;

@@ -18,18 +18,21 @@ Each renders the **same landing page with the same copy**, so everything that di
 | `@ds/editorial-bold` | Agency / magazine | Zero radius, no shadows, serif display type up to 7rem |
 | `@ds/warm-consumer` | Consumer brand | Warm neutrals, terracotta, 24px curves, wide soft shadows |
 | `@ds/dark-technical` | Developer tool | Dark by default, monospace headlines, tight density, cyan accent |
+| `@ds/cinematic-dark` | Creator tool / film | Pure black, magenta→cyan gradients, display type to 140px, media-first |
 
 ## How it works
 
-**`@ds/shared` owns every component and section and declares no values.** Each system declares every value and no components, by answering the token contract in `packages/shared/contract.mjs` — 69 custom properties covering color, space, radius, type, elevation and section rhythm.
+**`@ds/shared` owns every component and section and declares no values.** Each system declares every value and no components, by answering the token contract in `packages/shared/contract.mjs` — 72 custom properties covering color, space, radius, type, elevation and section rhythm.
 
-A system is therefore *a set of answers*, not a fork. Four systems cost roughly one system's worth of maintenance, and a new one is a single stylesheet.
+A system is therefore *a set of answers*, not a fork. Five systems cost roughly one system's worth of maintenance, and a new one is a single stylesheet.
+
+When a system needs something the contract genuinely cannot express — a *rule* rather than a *value* — it ships an `overrides.css` loaded after the shared component styles. `@ds/cinematic-dark` is the worked example: pill buttons (one radius token cannot serve both buttons and inputs), gradient-clipped display type, and a focus glow are all rules, and each override says in a comment why it is not a token.
 
 The contract deliberately includes radius, type scale and section rhythm rather than just color: a system that can only change hue can only ever look recolored, while one that owns the geometry and the typography reads as genuinely different.
 
 ## The vocabulary
 
-**Sections** compose a landing page and own its vertical rhythm: `Nav`, `Hero`, `LogoCloud`, `FeatureGrid`, `Testimonials`, `Pricing`, `FAQ`, `CTA`, `Footer`.
+**Sections** compose a landing page and own its vertical rhythm: `Nav`, `Hero`, `LogoCloud`, `MediaShowcase`, `FeatureGrid`, `Testimonials`, `Pricing`, `FAQ`, `CTA`, `Footer`.
 
 **Components** are the parts they are built from: `ThemeProvider`, `Stack`, `Container`, `Section`, `Heading`, `Text`, `Button`, `Field`, `Input`, `Textarea`, `Select`, `Checkbox`, `Switch`, `Badge`, `Avatar`, `Card`, `Alert`, `Spinner`, `Divider`.
 

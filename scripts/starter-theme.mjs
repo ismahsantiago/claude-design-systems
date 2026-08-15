@@ -83,9 +83,15 @@ export const STARTER_LIGHT = {
   '--ds-weight-semibold': '600',
   '--ds-weight-bold': '700',
 
+  // A flat one-color gradient is the honest neutral answer: consumers can use
+  // the token unconditionally, and the system reads as gradient-free.
+  '--ds-gradient-accent': 'linear-gradient(135deg, #3f5bd9 0%, #3f5bd9 100%)',
+  '--ds-gradient-warm': 'linear-gradient(135deg, #c2603a 0%, #c2603a 100%)',
+
   '--ds-shadow-sm': '0 1px 2px rgb(9 11 15 / 0.06)',
   '--ds-shadow-md': '0 4px 12px rgb(9 11 15 / 0.08)',
   '--ds-shadow-lg': '0 12px 32px rgb(9 11 15 / 0.12)',
+  '--ds-shadow-glow': 'none',
   '--ds-duration-fast': '120ms',
   '--ds-duration-md': '200ms',
   '--ds-ease': 'cubic-bezier(0.2, 0, 0.2, 1)',

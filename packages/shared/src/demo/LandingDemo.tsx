@@ -17,6 +17,7 @@ import { Nav } from '../sections/Nav/Nav';
 import { Hero } from '../sections/Hero/Hero';
 import { LogoCloud } from '../sections/LogoCloud/LogoCloud';
 import { FeatureGrid } from '../sections/FeatureGrid/FeatureGrid';
+import { MediaShowcase } from '../sections/MediaShowcase/MediaShowcase';
 import { Testimonials } from '../sections/Testimonials/Testimonials';
 import { Pricing } from '../sections/Pricing/Pricing';
 import { FAQ } from '../sections/FAQ/FAQ';
@@ -42,6 +43,29 @@ function Glyph({ path }: { path: string }) {
 function Wordmark({ label }: { label: string }) {
   return <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: '-0.02em' }}>{label}</span>;
 }
+
+/**
+ * Stand-in media. Painted from the system's own gradient tokens rather than
+ * loaded from anywhere, so the demo pulls no network assets and each system's
+ * gradients get shown at size.
+ */
+function Plate({ gradient }: { gradient: 'accent' | 'warm' }) {
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        background: `var(--ds-gradient-${gradient})`,
+      }}
+    />
+  );
+}
+
+const SHOWCASE = [
+  { media: <Plate gradient="accent" />, title: 'Onboarding flow', meta: '12 screens · 2026-04' },
+  { media: <Plate gradient="warm" />, title: 'Billing redesign', meta: '8 screens · 2026-05' },
+  { media: <Plate gradient="accent" />, title: 'Mobile companion', meta: '21 screens · 2026-06' },
+];
 
 const FEATURES = [
   {
@@ -184,6 +208,12 @@ export function LandingDemo() {
           <Wordmark label="Meridian" />,
           <Wordmark label="Ostrom" />,
         ]}
+      />
+
+      <MediaShowcase
+        title="Built with Northwind"
+        subtitle="Every screen below is the same component library under a different theme."
+        items={SHOWCASE}
       />
 
       <FeatureGrid

@@ -1,0 +1,99 @@
+.ds-media-grid {
+  display: grid;
+  gap: var(--ds-space-xl);
+}
+
+.ds-media-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ds-media-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.ds-media-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1000px) {
+  .ds-media-grid--3,
+  .ds-media-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Media grids collapse to a single column rather than shrinking to thumbnails. */
+@media (max-width: 768px) {
+  .ds-media-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.ds-media-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-md);
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ds-media-tile__frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-lg);
+  transition:
+    border-color var(--ds-duration-md) var(--ds-ease),
+    box-shadow var(--ds-duration-md) var(--ds-ease);
+}
+
+.ds-media-tile:hover .ds-media-tile__frame {
+  border-color: var(--ds-color-accent);
+}
+
+.ds-media-tile__frame--video {
+  aspect-ratio: 16 / 9;
+}
+.ds-media-tile__frame--square {
+  aspect-ratio: 1 / 1;
+}
+.ds-media-tile__frame--portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.ds-media-tile__frame > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Named explicitly rather than left to the descendant rule above, so the
+ * hover-playback element has a rule of its own to change. */
+.ds-media-tile__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: var(--ds-color-surface-sunken);
+}
+
+.ds-media-tile__caption {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2xs);
+  min-width: 0;
+}
+
+.ds-media-tile__title {
+  font-size: var(--ds-text-md);
+  font-weight: var(--ds-weight-medium);
+  color: var(--ds-color-text);
+}
+
+/* Technical metadata reads as data, not prose. */
+.ds-media-tile__meta {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-xs);
+  color: var(--ds-color-text-muted);
+}

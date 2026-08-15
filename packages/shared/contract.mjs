@@ -121,11 +121,30 @@ export const CONTRACT = [
     ],
   },
   {
+    title: 'Gradients',
+    tokens: [
+      {
+        name: '--ds-gradient-accent',
+        description:
+          'The signature gradient, for hero backgrounds, display type and fills. Systems that do not use gradients answer with a flat `linear-gradient` of one color, so consumers never have to branch.',
+      },
+      {
+        name: '--ds-gradient-warm',
+        description: 'Secondary gradient, for a second surface that must not repeat the first.',
+      },
+    ],
+  },
+  {
     title: 'Elevation & motion',
     tokens: [
       { name: '--ds-shadow-sm', description: 'Resting lift. May be `none` for flat systems.' },
       { name: '--ds-shadow-md', description: 'Raised card.' },
       { name: '--ds-shadow-lg', description: 'Floating panel.' },
+      {
+        name: '--ds-shadow-glow',
+        description:
+          'Atmospheric halo around focused or active elements. `none` in systems that express focus with an outline alone.',
+      },
       { name: '--ds-duration-fast', description: 'Hover and focus transitions.' },
       { name: '--ds-duration-md', description: 'Entrances.' },
       { name: '--ds-ease', description: 'Shared easing curve.' },

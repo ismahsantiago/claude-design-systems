@@ -73,6 +73,8 @@ export { SectionHeader } from './sections/SectionHeader/SectionHeader';
 export type { SectionHeaderProps } from './sections/SectionHeader/SectionHeader';
 export { FeatureGrid } from './sections/FeatureGrid/FeatureGrid';
 export type { FeatureGridProps, Feature } from './sections/FeatureGrid/FeatureGrid';
+export { MediaShowcase } from './sections/MediaShowcase/MediaShowcase';
+export type { MediaShowcaseProps, MediaItem } from './sections/MediaShowcase/MediaShowcase';
 export { Testimonials } from './sections/Testimonials/Testimonials';
 export type { TestimonialsProps, Testimonial } from './sections/Testimonials/Testimonials';
 export { Pricing } from './sections/Pricing/Pricing';
