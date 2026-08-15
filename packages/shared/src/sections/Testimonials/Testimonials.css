@@ -1,0 +1,83 @@
+.ds-testimonials--grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ds-space-xl);
+}
+
+@media (max-width: 900px) {
+  .ds-testimonials--grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .ds-testimonials--grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.ds-testimonials--feature {
+  max-width: 48rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ds-testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-lg);
+  margin: 0;
+  min-width: 0;
+}
+
+.ds-testimonials--grid .ds-testimonial {
+  padding: var(--ds-space-xl);
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-lg);
+}
+
+.ds-testimonial__quote {
+  margin: 0;
+  font-size: var(--ds-text-lg);
+  line-height: var(--ds-leading-loose);
+  color: var(--ds-color-text);
+  text-wrap: pretty;
+}
+
+.ds-testimonials--feature .ds-testimonial__quote {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-2xl);
+  line-height: var(--ds-leading-tight);
+  text-wrap: balance;
+}
+
+.ds-testimonial__author {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-md);
+  /* Pushes the attribution to the bottom so cards of unequal quote length align. */
+  margin-block-start: auto;
+}
+
+.ds-testimonials--feature .ds-testimonial__author {
+  justify-content: center;
+}
+
+.ds-testimonial__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  text-align: start;
+}
+
+.ds-testimonial__name {
+  font-size: var(--ds-text-md);
+  font-weight: var(--ds-weight-semibold);
+  color: var(--ds-color-text);
+}
+
+.ds-testimonial__role {
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+}

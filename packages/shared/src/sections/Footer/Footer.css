@@ -1,0 +1,94 @@
+.ds-footer {
+  width: 100%;
+  padding-block: var(--ds-space-3xl);
+  background: var(--ds-color-surface-sunken);
+  border-block-start: 1px solid var(--ds-color-border);
+}
+
+.ds-footer__top {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--ds-space-3xl);
+  flex-wrap: wrap;
+  padding-block-end: var(--ds-space-2xl);
+}
+
+.ds-footer__identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-sm);
+  max-width: 22rem;
+}
+
+.ds-footer__brand {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-lg);
+  font-weight: var(--ds-weight-bold);
+  letter-spacing: var(--ds-tracking-display);
+  color: var(--ds-color-text);
+}
+
+.ds-footer__description {
+  margin: 0;
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-loose);
+  color: var(--ds-color-text-muted);
+}
+
+.ds-footer__columns {
+  display: flex;
+  gap: var(--ds-space-3xl);
+  flex-wrap: wrap;
+}
+
+.ds-footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-sm);
+  min-width: 8rem;
+}
+
+.ds-footer__column-title {
+  margin: 0;
+  margin-block-end: var(--ds-space-2xs);
+  font-size: var(--ds-text-sm);
+  font-weight: var(--ds-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ds-color-text);
+}
+
+.ds-footer__link {
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+  text-decoration: none;
+  transition: color var(--ds-duration-fast) var(--ds-ease);
+}
+
+.ds-footer__link:hover {
+  color: var(--ds-color-text);
+}
+
+.ds-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-lg);
+  flex-wrap: wrap;
+  padding-block-start: var(--ds-space-lg);
+  border-block-start: 1px solid var(--ds-color-border);
+}
+
+.ds-footer__copyright {
+  margin: 0;
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+}
+
+.ds-footer__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-lg);
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+}

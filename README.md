@@ -1,81 +1,62 @@
-# starter-design-system
+# claude-design-systems
 
-A small React design system built to be **synced to [claude.ai/design](https://claude.ai/design)** — 17 components on a two-layer token system, with a Storybook, a library build, and per-component type declarations.
+Four base design systems for landing pages, plus the tooling to create, validate and sync new ones.
 
 ```bash
 npm install
-npm run storybook   # browse the components at localhost:6006
-npm run build       # emit dist/
-npm run verify      # check the built artifacts render correctly
+npm run check                                  # typecheck + build + validate everything
+npm run storybook --workspace @ds/saas-clean   # look at one
 ```
 
-## Using it
+## The systems
 
-Everything renders inside a `ThemeProvider`. Without one there is no `.ds-root` element, the tokens have nowhere to resolve, and components come out unstyled.
+Each renders the **same landing page with the same copy**, so everything that differs between them is the tokens doing their job.
 
-```tsx
-import { ThemeProvider, Card, Field, Input, Button, Stack } from 'starter-design-system';
-import 'starter-design-system/styles.css';
+| Package | Register | Signature |
+| --- | --- | --- |
+| `@ds/saas-clean` | Modern SaaS | Airy neutrals, one confident blue, soft 12px corners |
+| `@ds/editorial-bold` | Agency / magazine | Zero radius, no shadows, serif display type up to 7rem |
+| `@ds/warm-consumer` | Consumer brand | Warm neutrals, terracotta, 24px curves, wide soft shadows |
+| `@ds/dark-technical` | Developer tool | Dark by default, monospace headlines, tight density, cyan accent |
 
-export function App() {
-  return (
-    <ThemeProvider theme="system" fullBleed>
-      <Card title="Invite a teammate">
-        <Stack gap="lg">
-          <Field label="Email address" required>
-            <Input placeholder="jane@example.com" />
-          </Field>
-          <Button>Send invite</Button>
-        </Stack>
-      </Card>
-    </ThemeProvider>
-  );
-}
+## How it works
+
+**`@ds/shared` owns every component and section and declares no values.** Each system declares every value and no components, by answering the token contract in `packages/shared/contract.mjs` — 69 custom properties covering color, space, radius, type, elevation and section rhythm.
+
+A system is therefore *a set of answers*, not a fork. Four systems cost roughly one system's worth of maintenance, and a new one is a single stylesheet.
+
+The contract deliberately includes radius, type scale and section rhythm rather than just color: a system that can only change hue can only ever look recolored, while one that owns the geometry and the typography reads as genuinely different.
+
+## The vocabulary
+
+**Sections** compose a landing page and own its vertical rhythm: `Nav`, `Hero`, `LogoCloud`, `FeatureGrid`, `Testimonials`, `Pricing`, `FAQ`, `CTA`, `Footer`.
+
+**Components** are the parts they are built from: `ThemeProvider`, `Stack`, `Container`, `Section`, `Heading`, `Text`, `Button`, `Field`, `Input`, `Textarea`, `Select`, `Checkbox`, `Switch`, `Badge`, `Avatar`, `Card`, `Alert`, `Spinner`, `Divider`.
+
+Everything renders inside a `ThemeProvider` — it owns the `.ds-root` element the tokens resolve against. Without one, components render structurally correct and completely unstyled.
+
+## Making a new one
+
+```bash
+npm run new-system -- ocean-calm "Ocean Calm" "Cool blues, wide spacing, quiet type."
+npm install
+# edit packages/ocean-calm/src/theme.css
+npm run check
 ```
 
-## How it is put together
+The generated theme is emitted **from the contract**, so a new system is structurally complete on its first build — every token present, grouped and commented. The work is deciding values, and `docs/creating-a-system.md` says which four to decide first.
 
-**Tokens come in two layers** (`src/styles/tokens.css`). Primitives (`--ds-gray-500`, `--ds-brand-600`) are the raw palette and are never referenced by components. Semantics (`--ds-color-surface`, `--ds-space-md`, `--ds-radius-lg`) are what components and product code use. Dark mode redefines *only* the semantic layer, which is why one block of overrides re-themes every component.
+## Validation
 
-**Themes are explicit.** `ThemeProvider` resolves `system` to a concrete value via `matchMedia` and stamps `data-ds-theme="light" | "dark"` on the root, so the DOM always states which theme is in effect rather than leaving it to a media query.
+`npm run verify` renders each built system and checks what a typecheck and a green build cannot see:
 
-**Styling is plain CSS with a `ds-` prefix**, colocated with each component and pulled into a single `dist/styles.css` at build time — tokens first, then the base layer, then component rules. There is no CSS-in-JS and no Tailwind dependency.
+- **Contract completeness** — a forgotten token does not error, it renders as nothing.
+- **Dangling references** — CSS reading an undeclared `var(--ds-*)` silently resolves to empty.
+- **Class coverage** — every class in the markup has a rule. A class with no rule is an unstyled component.
+- **Structural contracts** — components still emit the markup and ARIA wiring they promise.
 
-**The base layer is scoped to `.ds-root`**, not to `html`/`body`, so dropping this system into an existing app never restyles that app's own markup.
-
-**Spacing is never hand-written.** `Stack` takes `gap`/`padding` from the token scale, and `spaceVar('md')` is exported for the cases where you need the raw `var(--ds-space-md)` string.
-
-## Components
-
-| Group | Components |
-| --- | --- |
-| Foundations | `ThemeProvider`, `useTheme` |
-| Layout | `Stack`, `Divider` |
-| Typography | `Heading`, `Text` |
-| Actions | `Button` |
-| Forms | `Field`, `Input`, `Textarea`, `Select`, `Checkbox`, `Switch` |
-| Display | `Badge`, `Avatar`, `Card` |
-| Feedback | `Alert`, `Spinner` |
-
-`Field` is the one to know: it generates the control id and injects `id`, `aria-describedby`, `invalid` and `required` into its child, so `Input`, `Select` and `Textarea` never have to be told about validation plumbing.
-
-## Layout of the repo
-
-```
-src/
-  styles/tokens.css      the two token layers, light + dark
-  styles/base.css        .ds-root scoping, focus ring, reduced motion
-  styles/control.css     shared field-control surface
-  components/<Name>/     Component.tsx + Component.css + Component.stories.tsx
-  stories/               token reference + a composed example page
-  index.ts               public exports
-scripts/verify-build.mjs post-build assertions on dist/
-```
-
-## Verification
-
-`npm run verify` renders a representative tree from `dist/` and asserts what a typecheck cannot: that components emit the markup and ARIA wiring they promise, that **every class the markup emits has a rule** in the stylesheet, and that **every token the stylesheet references is defined**. A class with no rule is a silently unstyled component; an undefined token is a silently transparent color. Both failure modes are invisible in review and obvious in production.
+All four are failure modes that are invisible in review and obvious in production. They are also not a substitute for looking at the Storybook.
 
 ## Syncing to Claude Design
 
-Once you are happy with the components, run `/design-sync` in this directory. It converts the built `dist/` plus the Storybook into the format claude.ai/design consumes, so the design agent builds screens out of *these* components instead of generic ones. The pieces it looks for are already in place: a single `dist/styles.css`, per-component `.d.ts` files with exported `<Name>Props` interfaces, and a story file per component.
+`/design-sync`, run from a package directory, uploads that system to [claude.ai/design](https://claude.ai/design) so the design agent builds pages from its real components. One system per project. See `docs/syncing.md`.

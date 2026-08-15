@@ -1,0 +1,70 @@
+.ds-hero__headline {
+  margin: 0;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-display);
+  font-weight: var(--ds-weight-bold);
+  line-height: var(--ds-leading-tight);
+  letter-spacing: var(--ds-tracking-display);
+  color: var(--ds-color-text);
+  text-wrap: balance;
+}
+
+.ds-hero__subhead {
+  margin: 0;
+  max-width: 46ch;
+  font-size: var(--ds-text-lg);
+  line-height: var(--ds-leading-loose);
+  color: var(--ds-color-text-muted);
+  text-wrap: pretty;
+}
+
+.ds-hero__note {
+  margin: 0;
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+}
+
+.ds-hero--center .ds-hero__copy {
+  text-align: center;
+}
+
+.ds-hero--center .ds-hero__subhead {
+  margin-inline: auto;
+}
+
+/* Split heroes read as a column of copy, so the measure tightens. */
+.ds-hero--split .ds-hero__subhead {
+  max-width: 38ch;
+}
+
+.ds-hero__actions {
+  margin-block-start: var(--ds-space-sm);
+}
+
+.ds-hero__media {
+  width: 100%;
+  border-radius: var(--ds-radius-lg);
+  overflow: hidden;
+}
+
+.ds-hero__media img,
+.ds-hero__media video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ds-hero__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ds-space-3xl);
+  align-items: center;
+}
+
+/* Below the split breakpoint the media follows the copy instead of sitting beside it. */
+@media (max-width: 860px) {
+  .ds-hero__split {
+    grid-template-columns: 1fr;
+    gap: var(--ds-space-2xl);
+  }
+}

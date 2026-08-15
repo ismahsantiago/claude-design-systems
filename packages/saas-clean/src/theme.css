@@ -1,0 +1,162 @@
+/**
+ * saas-clean — modern SaaS.
+ *
+ * Airy, low-contrast neutrals with one confident blue. Soft corners, restrained
+ * shadows, generous section rhythm. The register of a product that wants to
+ * look calm and well-run.
+ *
+ * Every token in `@ds/shared/contract` is answered below. Primitives are local
+ * to this file: shared owns no palette, so a system's colors never leak into
+ * its neighbours.
+ */
+
+:root,
+[data-ds-theme='light'] {
+  color-scheme: light;
+
+  /* ---- primitives ---- */
+  --gray-0: #ffffff;
+  --gray-50: #f7f8fa;
+  --gray-100: #eef0f4;
+  --gray-200: #dfe3ea;
+  --gray-300: #c7cdd8;
+  --gray-400: #9aa3b2;
+  --gray-500: #6d7684;
+  --gray-600: #4d5560;
+  --gray-700: #363c46;
+  --gray-800: #21262d;
+  --gray-900: #14171c;
+
+  --brand-50: #eef4ff;
+  --brand-200: #bcd0ff;
+  --brand-400: #6f92f5;
+  --brand-500: #4a6fe8;
+  --brand-600: #3556cc;
+  --brand-700: #2941a1;
+  --brand-900: #16224f;
+
+  /* ---- surface & border ---- */
+  --ds-color-bg: var(--gray-0);
+  --ds-color-surface: var(--gray-0);
+  --ds-color-surface-sunken: var(--gray-50);
+  --ds-color-surface-hover: var(--gray-100);
+  --ds-color-border: var(--gray-200);
+  --ds-color-border-strong: var(--gray-300);
+
+  /* ---- text ---- */
+  --ds-color-text: var(--gray-900);
+  --ds-color-text-muted: var(--gray-500);
+  --ds-color-text-on-accent: var(--gray-0);
+
+  /* ---- accent ---- */
+  --ds-color-accent: var(--brand-500);
+  --ds-color-accent-hover: var(--brand-600);
+  --ds-color-accent-active: var(--brand-700);
+  --ds-color-accent-subtle: var(--brand-50);
+  --ds-color-accent-text: var(--brand-700);
+
+  /* ---- status ---- */
+  --ds-color-success: #17864c;
+  --ds-color-success-subtle: #d9f2e3;
+  --ds-color-success-text: #0e6338;
+  --ds-color-warning: #a9700a;
+  --ds-color-warning-subtle: #fdeecd;
+  --ds-color-warning-text: #85560a;
+  --ds-color-danger: #c3382f;
+  --ds-color-danger-hover: #9a2822;
+  --ds-color-danger-subtle: #fbdedd;
+  --ds-color-danger-text: #9a2822;
+  --ds-color-focus-ring: var(--brand-400);
+  --ds-color-overlay: rgb(11 13 17 / 0.45);
+
+  /* ---- space ---- */
+  --ds-space-none: 0;
+  --ds-space-2xs: 2px;
+  --ds-space-xs: 4px;
+  --ds-space-sm: 8px;
+  --ds-space-md: 12px;
+  --ds-space-lg: 16px;
+  --ds-space-xl: 24px;
+  --ds-space-2xl: 32px;
+  --ds-space-3xl: 48px;
+
+  /* ---- section rhythm ---- */
+  --ds-section-gap: 96px;
+  --ds-container-width: 1120px;
+
+  /* ---- radius ---- */
+  --ds-radius-sm: 4px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 12px;
+  --ds-radius-full: 999px;
+
+  /* ---- typography ---- */
+  --ds-font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ds-font-display: var(--ds-font-sans);
+  --ds-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ds-text-xs: 0.75rem;
+  --ds-text-sm: 0.8125rem;
+  --ds-text-md: 0.9375rem;
+  --ds-text-lg: 1.0625rem;
+  --ds-text-xl: 1.25rem;
+  --ds-text-2xl: 1.75rem;
+  --ds-text-3xl: 2.25rem;
+  --ds-text-display: clamp(2.75rem, 5vw, 3.75rem);
+
+  --ds-leading-tight: 1.15;
+  --ds-leading-normal: 1.5;
+  --ds-leading-loose: 1.65;
+  --ds-tracking-display: -0.02em;
+
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold: 700;
+
+  /* ---- elevation & motion ---- */
+  --ds-shadow-sm: 0 1px 2px rgb(11 13 17 / 0.06);
+  --ds-shadow-md: 0 4px 12px rgb(11 13 17 / 0.08), 0 1px 3px rgb(11 13 17 / 0.06);
+  --ds-shadow-lg: 0 12px 32px rgb(11 13 17 / 0.12);
+  --ds-duration-fast: 120ms;
+  --ds-duration-md: 200ms;
+  --ds-ease: cubic-bezier(0.2, 0, 0.2, 1);
+
+  /* ---- controls ---- */
+  --ds-control-height-sm: 30px;
+  --ds-control-height-md: 38px;
+  --ds-control-height-lg: 46px;
+}
+
+[data-ds-theme='dark'] {
+  color-scheme: dark;
+
+  --ds-color-bg: #0b0d11;
+  --ds-color-surface: var(--gray-900);
+  --ds-color-surface-sunken: #0b0d11;
+  --ds-color-surface-hover: var(--gray-800);
+  --ds-color-border: var(--gray-800);
+  --ds-color-border-strong: var(--gray-700);
+
+  --ds-color-text: var(--gray-100);
+  --ds-color-text-muted: var(--gray-400);
+
+  --ds-color-accent-hover: var(--brand-400);
+  --ds-color-accent-active: var(--brand-200);
+  --ds-color-accent-subtle: var(--brand-900);
+  --ds-color-accent-text: var(--brand-200);
+
+  --ds-color-success-subtle: #0a2e1d;
+  --ds-color-success-text: #7fd8a4;
+  --ds-color-warning-subtle: #3a2708;
+  --ds-color-warning-text: #f0c168;
+  --ds-color-danger: #e5675c;
+  --ds-color-danger-hover: #f08a80;
+  --ds-color-danger-subtle: #421310;
+  --ds-color-danger-text: #f0a19a;
+  --ds-color-overlay: rgb(0 0 0 / 0.6);
+
+  --ds-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --ds-shadow-md: 0 4px 12px rgb(0 0 0 / 0.45);
+  --ds-shadow-lg: 0 12px 32px rgb(0 0 0 / 0.55);
+}

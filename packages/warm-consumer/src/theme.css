@@ -1,0 +1,143 @@
+/**
+ * Warm Consumer — earthy palette, generous curves, soft shadows.
+ *
+ * The character comes from geometry and warmth rather than from a loud accent:
+ *   - radii are large enough to read as friendly at every size;
+ *   - the neutral ramp is warm, so nothing on the page is truly grey;
+ *   - shadows are wide and low-opacity, giving lift without hard edges;
+ *   - leading is loose, which slows the page down.
+ *
+ * Every token named in `@ds/shared/contract` is answered below.
+ */
+
+:root,
+[data-ds-theme='light'] {
+  color-scheme: light;
+
+  /* ---- Surface & border ---- */
+  --ds-color-bg: #fdf8f3;
+  --ds-color-surface: #ffffff;
+  --ds-color-surface-sunken: #f6ede3;
+  --ds-color-surface-hover: #f0e4d7;
+  --ds-color-border: #ebdccc;
+  --ds-color-border-strong: #d8c3ac;
+
+  /* ---- Text ---- */
+  --ds-color-text: #3a2e26;
+  --ds-color-text-muted: #8a7566;
+  --ds-color-text-on-accent: #fffaf5;
+
+  /* ---- Accent ---- */
+  --ds-color-accent: #c2603a;
+  --ds-color-accent-hover: #a94e2c;
+  --ds-color-accent-active: #8c3e21;
+  --ds-color-accent-subtle: #fbe9dd;
+  --ds-color-accent-text: #a94e2c;
+
+  /* ---- Status ---- */
+  --ds-color-success: #4f7a45;
+  --ds-color-success-subtle: #e4efdd;
+  --ds-color-success-text: #3c5f34;
+  --ds-color-warning: #b07d12;
+  --ds-color-warning-subtle: #fbeed0;
+  --ds-color-warning-text: #8a6110;
+  --ds-color-danger: #b8453c;
+  --ds-color-danger-hover: #97352d;
+  --ds-color-danger-subtle: #fae2df;
+  --ds-color-danger-text: #97352d;
+  --ds-color-focus-ring: #d98a63;
+  --ds-color-overlay: rgb(58 46 38 / 0.4);
+
+  /* ---- Space ---- */
+  --ds-space-none: 0;
+  --ds-space-2xs: 3px;
+  --ds-space-xs: 6px;
+  --ds-space-sm: 10px;
+  --ds-space-md: 14px;
+  --ds-space-lg: 20px;
+  --ds-space-xl: 28px;
+  --ds-space-2xl: 40px;
+  --ds-space-3xl: 56px;
+
+  /* ---- Section rhythm ---- */
+  --ds-section-gap: 104px;
+  --ds-container-width: 1080px;
+
+  /* ---- Radius: the signature. Everything is rounded. ---- */
+  --ds-radius-sm: 8px;
+  --ds-radius-md: 14px;
+  --ds-radius-lg: 24px;
+  --ds-radius-full: 999px;
+
+  /* ---- Typography ---- */
+  --ds-font-sans: 'Avenir Next', Avenir, 'Nunito Sans', ui-rounded, system-ui, sans-serif;
+  --ds-font-display: var(--ds-font-sans);
+  --ds-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ds-text-xs: 0.8125rem;
+  --ds-text-sm: 0.875rem;
+  --ds-text-md: 1rem;
+  --ds-text-lg: 1.125rem;
+  --ds-text-xl: 1.375rem;
+  --ds-text-2xl: 1.875rem;
+  --ds-text-3xl: 2.5rem;
+  --ds-text-display: clamp(2.75rem, 5.5vw, 4rem);
+
+  --ds-leading-tight: 1.2;
+  --ds-leading-normal: 1.6;
+  --ds-leading-loose: 1.8;
+  --ds-tracking-display: -0.015em;
+
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold: 700;
+
+  /* ---- Elevation & motion: wide and soft ---- */
+  --ds-shadow-sm: 0 2px 6px rgb(122 84 56 / 0.07);
+  --ds-shadow-md: 0 8px 24px rgb(122 84 56 / 0.10);
+  --ds-shadow-lg: 0 20px 48px rgb(122 84 56 / 0.14);
+  --ds-duration-fast: 160ms;
+  --ds-duration-md: 260ms;
+  --ds-ease: cubic-bezier(0.34, 1.2, 0.4, 1);
+
+  /* ---- Controls ---- */
+  --ds-control-height-sm: 34px;
+  --ds-control-height-md: 44px;
+  --ds-control-height-lg: 54px;
+}
+
+[data-ds-theme='dark'] {
+  color-scheme: dark;
+
+  --ds-color-bg: #211a15;
+  --ds-color-surface: #2b231d;
+  --ds-color-surface-sunken: #191310;
+  --ds-color-surface-hover: #383029;
+  --ds-color-border: #3e352d;
+  --ds-color-border-strong: #574b40;
+
+  --ds-color-text: #f6ece2;
+  --ds-color-text-muted: #b3a293;
+  --ds-color-text-on-accent: #211a15;
+
+  --ds-color-accent: #e08a5f;
+  --ds-color-accent-hover: #eda478;
+  --ds-color-accent-active: #f5c1a0;
+  --ds-color-accent-subtle: #452a1c;
+  --ds-color-accent-text: #eda478;
+
+  --ds-color-success-subtle: #24331e;
+  --ds-color-success-text: #a5c795;
+  --ds-color-warning-subtle: #3a2c10;
+  --ds-color-warning-text: #e5c274;
+  --ds-color-danger: #e07a70;
+  --ds-color-danger-hover: #ec978e;
+  --ds-color-danger-subtle: #40201c;
+  --ds-color-danger-text: #ec978e;
+  --ds-color-overlay: rgb(0 0 0 / 0.55);
+
+  --ds-shadow-sm: 0 2px 6px rgb(0 0 0 / 0.35);
+  --ds-shadow-md: 0 8px 24px rgb(0 0 0 / 0.45);
+  --ds-shadow-lg: 0 20px 48px rgb(0 0 0 / 0.55);
+}

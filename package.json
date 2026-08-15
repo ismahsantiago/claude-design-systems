@@ -1,43 +1,21 @@
 {
-  "name": "starter-design-system",
+  "name": "claude-design-systems",
   "version": "0.1.0",
-  "description": "A small, syncable starter design system: React + TypeScript components on CSS-variable tokens.",
-  "license": "MIT",
-  "private": false,
+  "private": true,
+  "description": "A set of base design systems for landing pages, plus the tooling to create, validate and sync new ones.",
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./styles.css": "./dist/styles.css",
-    "./tokens.css": "./src/styles/tokens.css"
-  },
-  "files": [
-    "dist",
-    "src/styles"
+  "workspaces": [
+    "packages/*"
   ],
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "build": "vite build",
-    "dev": "vite build --watch",
-    "typecheck": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "verify": "node scripts/verify-build.mjs"
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "verify": "node scripts/verify.mjs",
+    "new-system": "node scripts/new-system.mjs",
+    "check": "npm run typecheck && npm run build && npm run verify"
   },
   "devDependencies": {
     "@storybook/addon-docs": "^10.5.8",
@@ -45,7 +23,7 @@
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "@typescript/typescript6": "^6.0.2",
+    "@typescript/typescript6": "^6.0.0",
     "@vitejs/plugin-react": "^6.0.5",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

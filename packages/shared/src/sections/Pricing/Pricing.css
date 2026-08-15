@@ -1,0 +1,119 @@
+.ds-pricing {
+  display: grid;
+  grid-template-columns: repeat(var(--ds-pricing-count, 3), minmax(0, 1fr));
+  gap: var(--ds-space-xl);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .ds-pricing {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 30rem;
+    margin-inline: auto;
+  }
+}
+
+.ds-plan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-lg);
+  padding: var(--ds-space-xl);
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-lg);
+  min-width: 0;
+}
+
+/*
+ * The featured plan is marked by border and elevation rather than by size, so
+ * the row of prices stays on one baseline and stays scannable.
+ */
+.ds-plan--featured {
+  border-color: var(--ds-color-accent);
+  box-shadow: var(--ds-shadow-md);
+}
+
+.ds-plan__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-sm);
+}
+
+.ds-plan__name {
+  font-size: var(--ds-text-md);
+  font-weight: var(--ds-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ds-color-text-muted);
+}
+
+.ds-plan__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ds-space-xs);
+  flex-wrap: wrap;
+}
+
+.ds-plan__price {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-3xl);
+  font-weight: var(--ds-weight-bold);
+  line-height: var(--ds-leading-tight);
+  letter-spacing: var(--ds-tracking-display);
+  color: var(--ds-color-text);
+}
+
+.ds-plan__period {
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+}
+
+.ds-plan__description {
+  margin: 0;
+  font-size: var(--ds-text-md);
+  line-height: var(--ds-leading-normal);
+  color: var(--ds-color-text-muted);
+}
+
+.ds-plan__action {
+  display: flex;
+}
+
+.ds-plan__action > * {
+  width: 100%;
+}
+
+.ds-plan__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-block-start: 1px solid var(--ds-color-border);
+  padding-block-start: var(--ds-space-lg);
+}
+
+.ds-plan__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ds-space-sm);
+  font-size: var(--ds-text-md);
+  line-height: var(--ds-leading-normal);
+  color: var(--ds-color-text);
+}
+
+.ds-plan__check {
+  display: inline-flex;
+  flex: none;
+  margin-block-start: 3px;
+  color: var(--ds-color-success);
+}
+
+.ds-pricing__note {
+  margin: 0;
+  text-align: center;
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+}

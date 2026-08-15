@@ -1,0 +1,47 @@
+.ds-section {
+  display: block;
+  width: 100%;
+  background: var(--ds-section-bg, transparent);
+  color: var(--ds-section-fg, inherit);
+}
+
+.ds-section--default {
+  --ds-section-bg: var(--ds-color-bg);
+}
+
+.ds-section--sunken {
+  --ds-section-bg: var(--ds-color-surface-sunken);
+}
+
+.ds-section--accent {
+  --ds-section-bg: var(--ds-color-accent-subtle);
+}
+
+/*
+ * Inverted bands flip to the accent fill. The nested overrides exist because
+ * component tokens resolve to page-level colors that would vanish here.
+ */
+.ds-section--inverted {
+  --ds-section-bg: var(--ds-color-accent);
+  --ds-section-fg: var(--ds-color-text-on-accent);
+  --ds-color-text: var(--ds-color-text-on-accent);
+  --ds-color-text-muted: color-mix(in srgb, var(--ds-color-text-on-accent) 75%, transparent);
+  --ds-color-border: color-mix(in srgb, var(--ds-color-text-on-accent) 25%, transparent);
+  --ds-color-border-strong: color-mix(in srgb, var(--ds-color-text-on-accent) 45%, transparent);
+}
+
+.ds-section--none {
+  padding-block: 0;
+}
+
+.ds-section--tight {
+  padding-block: calc(var(--ds-section-gap) * 0.5);
+}
+
+.ds-section--normal {
+  padding-block: var(--ds-section-gap);
+}
+
+.ds-section--loose {
+  padding-block: calc(var(--ds-section-gap) * 1.5);
+}

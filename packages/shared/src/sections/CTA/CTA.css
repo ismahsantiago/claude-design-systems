@@ -1,0 +1,42 @@
+.ds-cta__headline {
+  margin: 0;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-3xl);
+  font-weight: var(--ds-weight-bold);
+  line-height: var(--ds-leading-tight);
+  letter-spacing: var(--ds-tracking-display);
+  color: var(--ds-color-text);
+  text-wrap: balance;
+}
+
+.ds-cta__subhead {
+  margin: 0;
+  max-width: 44ch;
+  font-size: var(--ds-text-lg);
+  line-height: var(--ds-leading-loose);
+  color: var(--ds-color-text-muted);
+  text-wrap: pretty;
+}
+
+.ds-cta__note {
+  margin: 0;
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+}
+
+.ds-cta--center {
+  text-align: center;
+}
+
+/* Split closers put copy and actions on one line, so the copy stops wrapping wide. */
+.ds-cta--split .ds-cta__subhead {
+  max-width: 36ch;
+}
+
+.ds-cta__split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-3xl);
+  flex-wrap: wrap;
+}

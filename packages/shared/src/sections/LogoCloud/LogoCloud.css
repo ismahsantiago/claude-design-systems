@@ -1,0 +1,41 @@
+.ds-logo-cloud__caption {
+  margin: 0;
+  font-size: var(--ds-text-sm);
+  font-weight: var(--ds-weight-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ds-color-text-muted);
+}
+
+.ds-logo-cloud__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-2xl) var(--ds-space-3xl);
+}
+
+/*
+ * Customer logos arrive in their own brand colors, which would fight both each
+ * other and the page. Flattening them to the muted text color is what makes the
+ * row read as one quiet band of proof rather than a ransom note.
+ */
+.ds-logo-cloud__item {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ds-color-text-muted);
+  opacity: 0.75;
+  filter: grayscale(1);
+  transition: opacity var(--ds-duration-fast) var(--ds-ease);
+}
+
+.ds-logo-cloud__item:hover {
+  opacity: 1;
+}
+
+.ds-logo-cloud__item img,
+.ds-logo-cloud__item svg {
+  display: block;
+  height: 24px;
+  width: auto;
+}

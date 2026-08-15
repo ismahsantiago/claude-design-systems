@@ -1,0 +1,48 @@
+.ds-faq {
+  display: flex;
+  flex-direction: column;
+  border-block-start: 1px solid var(--ds-color-border);
+}
+
+.ds-faq__item {
+  border-block-end: 1px solid var(--ds-color-border);
+}
+
+.ds-faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-lg);
+  padding-block: var(--ds-space-lg);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-lg);
+  font-weight: var(--ds-weight-semibold);
+  line-height: var(--ds-leading-normal);
+  color: var(--ds-color-text);
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Safari draws its own disclosure triangle unless this is cleared. */
+.ds-faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.ds-faq__chevron {
+  flex: none;
+  color: var(--ds-color-text-muted);
+  transition: transform var(--ds-duration-fast) var(--ds-ease);
+}
+
+.ds-faq__item[open] .ds-faq__chevron {
+  transform: rotate(180deg);
+}
+
+.ds-faq__answer {
+  padding-block-end: var(--ds-space-lg);
+  padding-inline-end: var(--ds-space-3xl);
+  font-size: var(--ds-text-md);
+  line-height: var(--ds-leading-loose);
+  color: var(--ds-color-text-muted);
+  text-wrap: pretty;
+}

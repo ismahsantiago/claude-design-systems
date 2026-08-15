@@ -1,0 +1,147 @@
+/**
+ * Dark Technical — dark by default, monospace accents, dense and precise.
+ *
+ * The character comes from density and type, not from decoration:
+ *   - the space scale is one step tighter than the other systems throughout;
+ *   - the display family is monospace, so headlines read as terminal output;
+ *   - radii are small and shadows almost absent — depth comes from borders;
+ *   - the accent is a saturated cyan that only ever appears in small amounts.
+ *
+ * Both themes are defined, but this system is meant to be seen dark; its
+ * Storybook opens in dark for that reason.
+ *
+ * Every token named in `@ds/shared/contract` is answered below.
+ */
+
+:root,
+[data-ds-theme='light'] {
+  color-scheme: light;
+
+  /* ---- Surface & border ---- */
+  --ds-color-bg: #f4f6f8;
+  --ds-color-surface: #ffffff;
+  --ds-color-surface-sunken: #e9edf1;
+  --ds-color-surface-hover: #dfe4ea;
+  --ds-color-border: #d3d9e0;
+  --ds-color-border-strong: #aeb7c2;
+
+  /* ---- Text ---- */
+  --ds-color-text: #0f1720;
+  --ds-color-text-muted: #5b6775;
+  --ds-color-text-on-accent: #04141a;
+
+  /* ---- Accent ---- */
+  --ds-color-accent: #0d7f92;
+  --ds-color-accent-hover: #0a6675;
+  --ds-color-accent-active: #084f5b;
+  --ds-color-accent-subtle: #dcf1f4;
+  --ds-color-accent-text: #0a6675;
+
+  /* ---- Status ---- */
+  --ds-color-success: #12794f;
+  --ds-color-success-subtle: #d6f0e3;
+  --ds-color-success-text: #0d5c3c;
+  --ds-color-warning: #9a6b0d;
+  --ds-color-warning-subtle: #f9ecce;
+  --ds-color-warning-text: #7a540a;
+  --ds-color-danger: #bd3a34;
+  --ds-color-danger-hover: #9a2c27;
+  --ds-color-danger-subtle: #fadedc;
+  --ds-color-danger-text: #9a2c27;
+  --ds-color-focus-ring: #17b8d1;
+  --ds-color-overlay: rgb(9 14 20 / 0.5);
+
+  /* ---- Space: one step tighter than the other systems ---- */
+  --ds-space-none: 0;
+  --ds-space-2xs: 2px;
+  --ds-space-xs: 4px;
+  --ds-space-sm: 6px;
+  --ds-space-md: 10px;
+  --ds-space-lg: 14px;
+  --ds-space-xl: 20px;
+  --ds-space-2xl: 28px;
+  --ds-space-3xl: 40px;
+
+  /* ---- Section rhythm ---- */
+  --ds-section-gap: 72px;
+  --ds-container-width: 1180px;
+
+  /* ---- Radius ---- */
+  --ds-radius-sm: 2px;
+  --ds-radius-md: 4px;
+  --ds-radius-lg: 6px;
+  --ds-radius-full: 999px;
+
+  /* ---- Typography: monospace carries the identity ---- */
+  --ds-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --ds-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --ds-font-display: var(--ds-font-mono);
+
+  --ds-text-xs: 0.6875rem;
+  --ds-text-sm: 0.75rem;
+  --ds-text-md: 0.875rem;
+  --ds-text-lg: 1rem;
+  --ds-text-xl: 1.125rem;
+  --ds-text-2xl: 1.5rem;
+  --ds-text-3xl: 2rem;
+  --ds-text-display: clamp(2.25rem, 4vw, 3.25rem);
+
+  --ds-leading-tight: 1.2;
+  --ds-leading-normal: 1.55;
+  --ds-leading-loose: 1.7;
+  --ds-tracking-display: -0.03em;
+
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold: 700;
+
+  /* ---- Elevation & motion: depth from borders, not shadow ---- */
+  --ds-shadow-sm: none;
+  --ds-shadow-md: 0 0 0 1px rgb(15 23 32 / 0.08);
+  --ds-shadow-lg: 0 8px 24px rgb(15 23 32 / 0.16);
+  --ds-duration-fast: 80ms;
+  --ds-duration-md: 140ms;
+  --ds-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Controls ---- */
+  --ds-control-height-sm: 26px;
+  --ds-control-height-md: 32px;
+  --ds-control-height-lg: 40px;
+}
+
+[data-ds-theme='dark'] {
+  color-scheme: dark;
+
+  --ds-color-bg: #0a0f14;
+  --ds-color-surface: #111820;
+  --ds-color-surface-sunken: #070b0f;
+  --ds-color-surface-hover: #1a232d;
+  --ds-color-border: #1f2933;
+  --ds-color-border-strong: #33414f;
+
+  --ds-color-text: #d8e2ec;
+  --ds-color-text-muted: #7d8b9a;
+  --ds-color-text-on-accent: #04141a;
+
+  --ds-color-accent: #17b8d1;
+  --ds-color-accent-hover: #3fcde3;
+  --ds-color-accent-active: #7ee0ef;
+  --ds-color-accent-subtle: #0a2c33;
+  --ds-color-accent-text: #4fd3e8;
+
+  --ds-color-success: #2bb673;
+  --ds-color-success-subtle: #0a2b1d;
+  --ds-color-success-text: #5fd39b;
+  --ds-color-warning: #d4a017;
+  --ds-color-warning-subtle: #322508;
+  --ds-color-warning-text: #e8bf52;
+  --ds-color-danger: #e05252;
+  --ds-color-danger-hover: #ec7676;
+  --ds-color-danger-subtle: #351414;
+  --ds-color-danger-text: #ec7676;
+  --ds-color-overlay: rgb(0 0 0 / 0.7);
+
+  --ds-shadow-md: 0 0 0 1px rgb(216 226 236 / 0.06);
+  --ds-shadow-lg: 0 8px 24px rgb(0 0 0 / 0.6);
+}
