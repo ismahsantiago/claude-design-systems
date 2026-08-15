@@ -11,6 +11,7 @@
     ".": "./src/index.ts",
     "./demo": "./src/demo/LandingDemo.tsx",
     "./contract": "./contract.mjs",
+    "./fonts/*": "./fonts/*",
     "./base.css": "./src/styles/base.css"
   },
   "scripts": {

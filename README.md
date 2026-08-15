@@ -1,6 +1,6 @@
 # claude-design-systems
 
-Four base design systems for landing pages, plus the tooling to create, validate and sync new ones.
+Five base design systems for landing pages, plus the tooling to create, validate and sync new ones.
 
 ```bash
 npm install
@@ -49,6 +49,14 @@ npm run check
 
 The generated theme is emitted **from the contract**, so a new system is structurally complete on its first build — every token present, grouped and commented. The work is deciding values, and `docs/creating-a-system.md` says which four to decide first.
 
+## Fonts
+
+`Inter`, `Bricolage Grotesque` and `JetBrains Mono` are self-hosted in `packages/shared/fonts/` under the SIL OFL, as variable fonts covering latin and latin-ext. A system `@import`s the families it uses from the top of its `theme.css`; the others rely on system fonts.
+
+Vite's library mode inlines CSS-referenced assets as `data:` URIs and ignores `assetsInlineLimit` while doing it, which turned one stylesheet into 534 kB that barely gzipped. `scripts/externalize-fonts.mjs` undoes that after the write, so fonts stay cacheable and `styles.css` is 35 kB.
+
+The commercial faces named in the `cinematic-dark` brief — PP Editorial New, Söhne Breit — are not redistributable and are not shipped. They stay at the front of `--ds-font-display` so licensed files take over as a pure drop-in. See `packages/shared/fonts/README.md`.
+
 ## Validation
 
 `npm run verify` renders each built system and checks what a typecheck and a green build cannot see:
@@ -56,9 +64,10 @@ The generated theme is emitted **from the contract**, so a new system is structu
 - **Contract completeness** — a forgotten token does not error, it renders as nothing.
 - **Dangling references** — CSS reading an undeclared `var(--ds-*)` silently resolves to empty.
 - **Class coverage** — every class in the markup has a rule. A class with no rule is an unstyled component.
+- **Asset URLs** — every `url()` in the stylesheet resolves to a file that exists, and no font got silently re-inlined.
 - **Structural contracts** — components still emit the markup and ARIA wiring they promise.
 
-All four are failure modes that are invisible in review and obvious in production. They are also not a substitute for looking at the Storybook.
+All five are failure modes that are invisible in review and obvious in production. They are also not a substitute for looking at the Storybook.
 
 ## Syncing to Claude Design
 

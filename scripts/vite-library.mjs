@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import { externalizeFonts } from './externalize-fonts.mjs';
 
 /**
  * The shared library build for every design system in this repo.
@@ -35,6 +36,7 @@ export function createLibraryConfig(packageUrl, globalName) {
         ],
         exclude: ['**/*.stories.tsx'],
       }),
+      externalizeFonts(new URL('../packages/shared/fonts/', import.meta.url)),
     ],
     build: {
       lib: {
@@ -47,10 +49,15 @@ export function createLibraryConfig(packageUrl, globalName) {
         external: ['react', 'react-dom', 'react/jsx-runtime'],
         output: {
           globals: { react: 'React', 'react-dom': 'ReactDOM' },
-          assetFileNames: (asset) =>
-            asset.names?.some((name) => name.endsWith('.css'))
-              ? 'styles.css'
-              : '[name][extname]',
+          assetFileNames: (asset) => {
+            if (asset.names?.some((name) => name.endsWith('.css'))) return 'styles.css';
+            // Fonts go to their own directory: it is the layout `/design-sync`
+            // expects, and it keeps dist/ legible next to the two bundles.
+            if (asset.names?.some((name) => /\.(woff2?|ttf|otf)$/.test(name))) {
+              return 'fonts/[name][extname]';
+            }
+            return '[name][extname]';
+          },
         },
       },
       sourcemap: true,

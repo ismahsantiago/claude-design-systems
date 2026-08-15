@@ -91,6 +91,33 @@ for (const system of systems) {
   );
   record(dangling.length === 0, `every referenced token resolves (${referenced.length})`, dangling);
 
+  // ---- 3. font assets ----
+  // A stylesheet that names a face it cannot load is the same class of failure
+  // as a missing token: no error, just fallback metrics everywhere. And an
+  // inlined font means the bundler's asset handling silently regressed.
+  const assetRefs = [
+    ...new Set([...css.matchAll(/url\(['"]?\.\/([^'")]+)['"]?\)/g)].map((match) => match[1])),
+  ];
+  const brokenRefs = assetRefs.filter((ref) => !existsSync(join(dist, ref)));
+  record(brokenRefs.length === 0, `every asset URL resolves (${assetRefs.length})`, brokenRefs);
+
+  const inlinedFonts = (css.match(/data:font/g) ?? []).length;
+  record(
+    inlinedFonts === 0,
+    'fonts are emitted as files, not inlined',
+    inlinedFonts ? [`${inlinedFonts} data: URI(s) in styles.css`] : [],
+  );
+
+  // Self-hosted families are reported, not asserted: a system may legitimately
+  // rely on system fonts alone, so having none is not a failure.
+  const selfHosted = [
+    ...new Set(
+      [...css.matchAll(/@font-face\s*\{[^}]*?font-family:\s*['"]?([^;'"}]+)/g)].map((match) =>
+        match[1].trim(),
+      ),
+    ),
+  ];
+
   // ---- render for the remaining checks ----
   let html = '';
   let renderError = null;
@@ -139,7 +166,12 @@ for (const system of systems) {
   const failures = results.filter((result) => !result.ok);
   if (failures.length > 0) failedSystems += 1;
 
-  console.log(`\n${BOLD}${system}${RESET}`);
+  console.log(
+    `\n${BOLD}${system}${RESET}` +
+      (selfHosted.length
+        ? ` ${DIM}self-hosting ${selfHosted.join(', ')}${RESET}`
+        : ` ${DIM}system fonts only${RESET}`),
+  );
   for (const { ok, label, detail } of results) {
     console.log(`${ok ? GREEN + 'PASS' : RED + 'FAIL'}${RESET}  ${label}`);
     if (!ok && detail?.length) {

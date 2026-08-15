@@ -16,6 +16,8 @@ packages/<system>/        src/theme.css — the answers. That is nearly the whol
 scripts/new-system.mjs    generates a system FROM the contract
 scripts/verify.mjs        the validator
 scripts/coverage-tree.mjs the tree verify renders; add new sections here
+scripts/fetch-fonts.mjs    downloads the OFL fonts
+scripts/externalize-fonts.mjs  undoes Vite lib-mode font inlining
 docs/                     creating-a-system.md, syncing.md
 ```
 
@@ -39,6 +41,8 @@ Always run `npm run check` before committing. `verify` needs a fresh `dist/`, so
 **When adding a section to `@ds/shared`, add it to `scripts/coverage-tree.mjs` too.** The validator only checks what it renders; a section missing from the coverage tree ships unverified.
 
 **Adding a contract token is a breaking change.** It must be added to `contract.mjs`, answered in `scripts/starter-theme.mjs`, and answered in every existing theme. The generator refuses to run if the contract and the starter map disagree.
+
+**Fonts are assets, not values.** The bytes live in `packages/shared/fonts/` so two systems naming Inter do not ship two copies; the token that picks a family stays in the theme. `@import` them at the top of `theme.css` — `@import` is only legal before other rules. Regenerate with `node scripts/fetch-fonts.mjs`; never hand-edit the generated CSS. Only OFL faces are committed — see that directory's README before adding a commercial one.
 
 **The demo landing page is a fixture, not a component.** It lives in `packages/shared/src/demo/`, is exported only via `@ds/shared/demo`, and must never end up in a shipped bundle. Its copy and structure are identical everywhere on purpose: that is what makes the systems comparable.
 

@@ -13,6 +13,14 @@
  * Every token named in `@ds/shared/contract` is answered below.
  */
 
+/*
+ * Self-hosted faces, first: `@import` is only legal before other rules. This
+ * system's identity is the mono display type, so shipping the real JetBrains
+ * Mono rather than falling back to whatever the OS provides is not optional.
+ */
+@import '@ds/shared/fonts/inter.css';
+@import '@ds/shared/fonts/jetbrains-mono.css';
+
 :root,
 [data-ds-theme='light'] {
   color-scheme: light;
