@@ -15,7 +15,8 @@
     "typecheck": "npm run typecheck --workspaces --if-present",
     "verify": "node scripts/verify.mjs",
     "new-system": "node scripts/new-system.mjs",
-    "check": "npm run typecheck && npm run build && npm run verify"
+    "check": "npm run typecheck && npm run build && npm run verify",
+    "new-variant": "node scripts/new-variant.mjs"
   },
   "devDependencies": {
     "@storybook/addon-docs": "^10.5.8",

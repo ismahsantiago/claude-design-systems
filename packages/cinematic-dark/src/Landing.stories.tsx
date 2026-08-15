@@ -4,6 +4,11 @@ import { Button, Hero, MediaShowcase, Nav, ThemeProvider } from '@ds/shared';
 import './index';
 
 /**
+ * The demo brand here is invented. This system is a palette-and-type study
+ * after a public reference (see the note at the top of theme.css); using that
+ * company's name or product names in it would be passing their identity off
+ * as example content, which is a different thing entirely.
+ *
  * This system has no light variant — both theme values resolve to the same
  * black palette — so there is one landing story rather than the light/dark
  * pair the other systems ship.
@@ -35,7 +40,7 @@ export const CinematicHero: Story = {
       <Nav
         sticky
         bordered={false}
-        brand="RUNWAY"
+        brand="LUMEN"
         links={[
           { label: 'Research', href: '#' },
           { label: 'Product', href: '#' },
@@ -60,14 +65,14 @@ export const CinematicHero: Story = {
       />
       <MediaShowcase
         eyebrow="Recent"
-        title="Made with Runway"
+        title="Made with Lumen"
         ratio="portrait"
         columns={4}
         items={[
-          { media: <Plate from="#ff2d8e" to="#a855f7" />, title: 'Gen-4 Turbo', meta: '00:12 · 24fps' },
-          { media: <Plate from="#a855f7" to="#00e5ff" />, title: 'Motion Brush', meta: '00:08 · 24fps' },
-          { media: <Plate from="#ff6b35" to="#f72585" />, title: 'Act-One', meta: '00:21 · 30fps' },
-          { media: <Plate from="#00e5ff" to="#ff2d8e" />, title: 'Frames', meta: '00:05 · 24fps' },
+          { media: <Plate from="#ff2d8e" to="#a855f7" />, title: 'Sequence 04', meta: '00:12 · 24fps' },
+          { media: <Plate from="#a855f7" to="#00e5ff" />, title: 'Depth pass', meta: '00:08 · 24fps' },
+          { media: <Plate from="#ff6b35" to="#f72585" />, title: 'Performance capture', meta: '00:21 · 30fps' },
+          { media: <Plate from="#00e5ff" to="#ff2d8e" />, title: 'Still frames', meta: '00:05 · 24fps' },
         ]}
       />
     </ThemeProvider>

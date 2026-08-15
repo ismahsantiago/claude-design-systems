@@ -174,5 +174,47 @@ export const REQUIRED_TOKENS = CONTRACT.flatMap((group) =>
  * Tokens a component sets on itself inline or inside a variant block, so they
  * are defined at the point of use rather than by the theme.
  */
+/**
+ * The expressive surface: the tokens that carry a system's identity.
+ *
+ * A *variant* is a system that inherits a base and restates only these. They
+ * were picked by asking which tokens change the feel of a page without
+ * changing its structure — recolouring, refacing and reshaping, but never
+ * respacing. That is why the space scale, the control heights and the status
+ * colours are absent: moving those makes a different system, not a variant of
+ * one, and the variant would drift out of sync with its base for no gain.
+ *
+ * Used by `scripts/new-variant.mjs` to decide what to put in the generated
+ * stylesheet. Everything not listed here is inherited from the base and stays
+ * inherited, so a fix to the base reaches every variant.
+ */
+export const EXPRESSIVE_TOKENS = [
+  '--ds-color-accent',
+  '--ds-color-accent-hover',
+  '--ds-color-accent-active',
+  '--ds-color-accent-subtle',
+  '--ds-color-accent-text',
+  '--ds-color-focus-ring',
+  '--ds-gradient-accent',
+  '--ds-gradient-warm',
+  '--ds-shadow-glow',
+  '--ds-color-bg',
+  '--ds-color-surface',
+  '--ds-color-surface-sunken',
+  '--ds-color-border',
+  '--ds-color-text',
+  '--ds-color-text-muted',
+  '--ds-font-sans',
+  '--ds-font-display',
+  '--ds-font-mono',
+  '--ds-font-display-settings',
+  '--ds-tracking-display',
+  '--ds-text-display',
+  '--ds-radius-sm',
+  '--ds-radius-md',
+  '--ds-radius-lg',
+  '--ds-section-gap',
+];
+
 export const LOCALLY_SCOPED =
   /^--ds-(card-padding|badge-|alert-|section-bg|section-fg|pricing-count)/;

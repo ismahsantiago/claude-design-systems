@@ -1,0 +1,136 @@
+/**
+ * Nocturne — ember on pure black.
+ *
+ * Ours. It shares a register with `cinematic-dark` — full-bleed dark canvas,
+ * oversized display type, media as the subject — and shares nothing else:
+ *
+ *   - the accent runs ember → violet, warm where the reference is cool, so the
+ *     page reads as firelight rather than as a screen;
+ *   - the display face is a WIDE grotesque (Archivo at wdth 125) instead of a
+ *     narrow one, which changes the silhouette of every headline;
+ *   - no commercial face is named anywhere. What is in the stack is what we
+ *     licensed and what we tuned.
+ *
+ * THIS SYSTEM HAS NO LIGHT MODE. Both `data-ds-theme` values resolve to the
+ * same palette, deliberately. The two selectors are kept rather than collapsed
+ * so `ThemeProvider` and the toggle keep working; they simply agree.
+ *
+ * This is the base its variants extend — see docs/variants.md. Restating a
+ * token in a variant is how it gets its own identity; everything left alone
+ * keeps inheriting fixes from here.
+ *
+ * Every token named in `@ds/shared/contract` is answered below.
+ */
+
+@import '@ds/shared/fonts/archivo.css';
+@import '@ds/shared/fonts/inter.css';
+@import '@ds/shared/fonts/jetbrains-mono.css';
+
+:root,
+[data-ds-theme='light'],
+[data-ds-theme='dark'] {
+  color-scheme: dark;
+
+  /* ---- Surface & border ---- */
+  --ds-color-bg: #000000;
+  --ds-color-surface: #121110;
+  --ds-color-surface-sunken: #080807;
+  --ds-color-surface-hover: #1e1c1a;
+  --ds-color-border: #2b2825;
+  --ds-color-border-strong: #423d38;
+
+  /* ---- Text: warm-tinted neutrals, never pure grey ---- */
+  --ds-color-text: #f7f4f0;
+  --ds-color-text-muted: #a8a099;
+  --ds-color-text-on-accent: #140a04;
+
+  /* ---- Accent: ember ---- */
+  --ds-color-accent: #ff5f1f;
+  --ds-color-accent-hover: #ff7d47;
+  --ds-color-accent-active: #ffa073;
+  --ds-color-accent-subtle: #2a1207;
+  --ds-color-accent-text: #ff8f5e;
+
+  /* ---- Status ---- */
+  --ds-color-success: #3ddc97;
+  --ds-color-success-subtle: #06291b;
+  --ds-color-success-text: #6fe7b4;
+  --ds-color-warning: #ffb020;
+  --ds-color-warning-subtle: #2e1f05;
+  --ds-color-warning-text: #ffc862;
+  --ds-color-danger: #ff4d4d;
+  --ds-color-danger-hover: #ff7070;
+  --ds-color-danger-subtle: #2e0d0d;
+  --ds-color-danger-text: #ff8080;
+  --ds-color-focus-ring: #ff5f1f;
+  --ds-color-overlay: rgb(0 0 0 / 0.78);
+
+  /* ---- Space ---- */
+  --ds-space-none: 0;
+  --ds-space-2xs: 2px;
+  --ds-space-xs: 4px;
+  --ds-space-sm: 8px;
+  --ds-space-md: 12px;
+  --ds-space-lg: 20px;
+  --ds-space-xl: 32px;
+  --ds-space-2xl: 48px;
+  --ds-space-3xl: 72px;
+
+  /* ---- Section rhythm ---- */
+  --ds-section-gap: 132px;
+  --ds-container-width: 1320px;
+
+  /* ---- Radius ---- */
+  --ds-radius-sm: 4px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 14px;
+  --ds-radius-full: 999px;
+
+  /* ---- Typography ---- */
+  --ds-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --ds-font-display: 'Archivo', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --ds-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ds-text-xs: 0.875rem;
+  --ds-text-sm: 1rem;
+  --ds-text-md: 1.125rem;
+  --ds-text-lg: 1.5rem;
+  --ds-text-xl: 2.25rem;
+  --ds-text-2xl: 3.5rem;
+  --ds-text-3xl: 5.5rem;
+  --ds-text-display: clamp(3rem, 10.5vw, 8.25rem);
+
+  --ds-leading-tight: 0.92;
+  --ds-leading-normal: 1.55;
+  --ds-leading-loose: 1.7;
+  --ds-tracking-display: -0.035em;
+  /*
+   * Archivo pushed wide and heavy. The width axis is the whole point: a wide
+   * grotesque at 132px has a different silhouette from a narrow one, and that
+   * silhouette is what makes this system recognisable at a glance.
+   */
+  --ds-font-display-settings: 'wdth' 125, 'wght' 700;
+
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold: 700;
+
+  /* ---- Gradients: ember through to violet, warm end first ---- */
+  --ds-gradient-accent: linear-gradient(135deg, #ffb020 0%, #ff5f1f 45%, #7c3aed 100%);
+  --ds-gradient-warm: linear-gradient(135deg, #ffd25e 0%, #ff5f1f 100%);
+
+  /* ---- Elevation: deep, soft, with an ember halo ---- */
+  --ds-shadow-sm: 0 4px 16px rgb(0 0 0 / 0.45);
+  --ds-shadow-md: 0 12px 32px rgb(0 0 0 / 0.55);
+  --ds-shadow-lg: 0 24px 64px rgb(0 0 0 / 0.65);
+  --ds-shadow-glow: 0 0 20px rgb(255 95 31 / 0.35);
+  --ds-duration-fast: 180ms;
+  --ds-duration-md: 280ms;
+  --ds-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- Controls ---- */
+  --ds-control-height-sm: 36px;
+  --ds-control-height-md: 48px;
+  --ds-control-height-lg: 60px;
+}

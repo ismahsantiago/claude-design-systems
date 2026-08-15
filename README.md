@@ -1,6 +1,6 @@
 # claude-design-systems
 
-Five base design systems for landing pages, plus the tooling to create, validate and sync new ones.
+Base design systems for landing pages, plus the tooling to create, validate and sync new ones.
 
 ```bash
 npm install
@@ -18,7 +18,9 @@ Each renders the **same landing page with the same copy**, so everything that di
 | `@ds/editorial-bold` | Agency / magazine | Zero radius, no shadows, serif display type up to 7rem |
 | `@ds/warm-consumer` | Consumer brand | Warm neutrals, terracotta, 24px curves, wide soft shadows |
 | `@ds/dark-technical` | Developer tool | Dark by default, monospace headlines, tight density, cyan accent |
-| `@ds/cinematic-dark` | Creator tool / film | Pure black, magenta→cyan gradients, display type to 140px, media-first |
+| `@ds/nocturne` | Creator tool / film | Pure black, ember→violet gradients, wide grotesque display to 132px, media-first |
+| `@ds/nocturne-cobalt` | *variant of nocturne* | The same system at midnight: cobalt accents, cooled neutrals, everything else inherited |
+| `@ds/cinematic-dark` | *reference study* | Built to a brief written after a public creator-tools site. Kept for comparison, not to ship — see the note in its `theme.css` |
 
 ## How it works
 
@@ -37,6 +39,16 @@ The contract deliberately includes radius, type scale and section rhythm rather 
 **Components** are the parts they are built from: `ThemeProvider`, `Stack`, `Container`, `Section`, `Heading`, `Text`, `Button`, `Field`, `Input`, `Textarea`, `Select`, `Checkbox`, `Switch`, `Badge`, `Avatar`, `Card`, `Alert`, `Spinner`, `Divider`.
 
 Everything renders inside a `ThemeProvider` — it owns the `.ds-root` element the tokens resolve against. Without one, components render structurally correct and completely unstyled.
+
+## Variants
+
+A variant inherits a base whole and restates only colour, gradients, faces, radius and display scale — `@ds/nocturne-cobalt` is eleven lines on top of `@ds/nocturne`.
+
+```bash
+npm run new-variant -- nocturne nocturne-slate "Nocturne Slate" "Grey, gradient from the left."
+```
+
+It exists for a loop: generate a page with the base in Claude Design, ask for a recolour, approve it visually, land it here, sync it as its own project. See `docs/variants.md`.
 
 ## Making a new one
 

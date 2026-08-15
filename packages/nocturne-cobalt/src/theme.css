@@ -1,0 +1,45 @@
+/**
+ * Nocturne Cobalt — cold blue on black: the same system at midnight instead of
+ * by firelight.
+ *
+ * A VARIANT of `nocturne`. It imports that system whole and restates only what
+ * is listed below. Everything else — spacing, type, radius, control heights,
+ * status colours, and every rule in nocturne's overrides — is inherited, so a
+ * fix to the base reaches here without being copied.
+ *
+ * This file is what a finished variant looks like: eleven lines of intent.
+ * The generator emits the full expressive surface with the base's values as a
+ * starting point; the work is deleting everything you are not changing.
+ *
+ * Nothing about type or geometry moves. The silhouette of a Cobalt page and a
+ * Nocturne page are identical — only the temperature differs, which is exactly
+ * what makes them read as one family.
+ */
+
+@import '@ds/nocturne/theme.css';
+
+:root,
+[data-ds-theme='light'],
+[data-ds-theme='dark'] {
+  /* ---- Accent: cobalt, cold where the base is warm ---- */
+  --ds-color-accent: #2f6bff;
+  --ds-color-accent-hover: #5488ff;
+  --ds-color-accent-active: #85aaff;
+  --ds-color-accent-subtle: #0a1633;
+  --ds-color-accent-text: #7ea4ff;
+  --ds-color-focus-ring: #2f6bff;
+
+  /* ---- Gradients: the cold end of the spectrum, cyan through to indigo ---- */
+  --ds-gradient-accent: linear-gradient(135deg, #38e0ff 0%, #2f6bff 50%, #6d28d9 100%);
+  --ds-gradient-warm: linear-gradient(135deg, #7ea4ff 0%, #2f6bff 100%);
+
+  /* ---- The halo follows the accent ---- */
+  --ds-shadow-glow: 0 0 20px rgb(47 107 255 / 0.4);
+
+  /* ---- Neutrals cool by a few degrees so the blue does not float ---- */
+  --ds-color-surface: #0e1116;
+  --ds-color-surface-sunken: #070a0e;
+  --ds-color-border: #1e242e;
+  --ds-color-text: #eef2f8;
+  --ds-color-text-muted: #98a3b3;
+}

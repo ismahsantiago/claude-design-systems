@@ -1,0 +1,152 @@
+/**
+ * Rules only Nocturne needs — and, by inheritance, its variants.
+ *
+ * Everything here is something the token contract genuinely cannot express: a
+ * *rule*, not a *value*. Each block says why, so the next person can tell a
+ * real exception from laziness.
+ *
+ * Loaded after the theme and after the shared component styles, so these win
+ * without `!important`. A variant inherits this file unchanged — which is the
+ * point: variants restate colour and type, never behaviour.
+ */
+
+/* ---------------------------------------------------------------------------
+ * Pill buttons.
+ * Not a token: `--ds-radius-md` is shared by buttons and inputs, and this
+ * system wants fully round buttons with softly rounded inputs. One token
+ * cannot answer both, and splitting radius per component would bloat the
+ * contract for one system's benefit.
+ * ------------------------------------------------------------------------- */
+.ds-button {
+  border-radius: var(--ds-radius-full);
+  padding-inline: var(--ds-space-xl);
+  font-weight: var(--ds-weight-medium);
+  transition:
+    transform var(--ds-duration-fast) var(--ds-ease),
+    background-color var(--ds-duration-fast) var(--ds-ease),
+    border-color var(--ds-duration-fast) var(--ds-ease),
+    box-shadow var(--ds-duration-fast) var(--ds-ease);
+}
+
+/*
+ * The one place lift is allowed. Scale is a rule, not a value, so it cannot be
+ * a token. Reduced-motion visitors get the colour change without the movement.
+ */
+.ds-button:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+
+.ds-button:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-button:hover:not(:disabled),
+  .ds-button:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+.ds-button--primary:hover:not(:disabled) {
+  box-shadow: var(--ds-shadow-glow);
+}
+
+/* Secondary is a hairline on black, not a filled surface. */
+.ds-button--secondary {
+  background: transparent;
+  border-color: var(--ds-color-border-strong);
+  color: var(--ds-color-text);
+}
+
+.ds-button--secondary:hover:not(:disabled) {
+  background: var(--ds-color-surface-hover);
+  border-color: var(--ds-color-text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+ * Gradient display type.
+ * Not a token: background-clip on text is a technique, not a value. Applied
+ * only to the two headline slots — on body copy it wrecks legibility and
+ * antialiasing.
+ *
+ * Because it reads `--ds-gradient-accent`, a variant that restates only that
+ * one token gets new headline colour for free. That is the mechanism the
+ * whole variant idea rests on.
+ * ------------------------------------------------------------------------- */
+.ds-hero__headline,
+.ds-cta__headline {
+  background: var(--ds-gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Stops the clipped text from cropping its descenders. */
+  padding-block-end: 0.08em;
+}
+
+/* ---------------------------------------------------------------------------
+ * Focus glow on inputs.
+ * Not a token: `--ds-shadow-glow` supplies the value; attaching it to the
+ * focus state as a second ring is a rule this system applies.
+ * ------------------------------------------------------------------------- */
+.ds-control {
+  background: var(--ds-color-surface-sunken);
+  border-color: var(--ds-color-border);
+}
+
+.ds-control:focus-visible {
+  outline: 2px solid var(--ds-color-accent);
+  outline-offset: 0;
+  box-shadow: var(--ds-shadow-glow);
+  border-color: var(--ds-color-accent);
+}
+
+/* ---------------------------------------------------------------------------
+ * Media-first surfaces: accent border and halo on hover, over a slower
+ * transition than the rest of the system uses.
+ * ------------------------------------------------------------------------- */
+.ds-card,
+.ds-feature-grid--card .ds-feature {
+  transition:
+    border-color var(--ds-duration-md) var(--ds-ease),
+    box-shadow var(--ds-duration-md) var(--ds-ease);
+}
+
+.ds-card--interactive:hover,
+.ds-feature-grid--card .ds-feature:hover,
+.ds-plan--featured {
+  border-color: var(--ds-color-accent);
+}
+
+.ds-media-tile:hover .ds-media-tile__frame {
+  box-shadow: var(--ds-shadow-lg), var(--ds-shadow-glow);
+}
+
+/* ---------------------------------------------------------------------------
+ * Blur-backed nav over full-bleed media. The shared sticky nav already blurs;
+ * on a pure-black canvas it also needs to start nearly transparent so hero
+ * media runs edge to edge behind it.
+ * ------------------------------------------------------------------------- */
+.ds-nav--sticky {
+  background: rgb(0 0 0 / 0.5);
+  backdrop-filter: blur(14px);
+  border-block-end-color: var(--ds-color-border);
+}
+
+/* ---------------------------------------------------------------------------
+ * Monospace metadata: captions, plan names and column headings read as data.
+ * ------------------------------------------------------------------------- */
+.ds-section-header__eyebrow,
+.ds-plan__name,
+.ds-footer__column-title {
+  font-family: var(--ds-font-mono);
+  font-weight: var(--ds-weight-regular);
+  letter-spacing: 0.02em;
+}
+
+/* The hero eyebrow is a hairline chip, so it never competes with the headline. */
+.ds-hero .ds-badge {
+  background: transparent;
+  border: 1px solid var(--ds-color-border-strong);
+  color: var(--ds-color-text-muted);
+  font-family: var(--ds-font-mono);
+}
