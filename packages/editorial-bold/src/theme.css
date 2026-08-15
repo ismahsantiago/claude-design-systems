@@ -10,6 +10,16 @@
  * Every token named in `@ds/shared/contract` is answered below.
  */
 
+/*
+ * Self-hosted faces, first: `@import` is only legal before other rules.
+ *
+ * This replaces a stack of Iowan Old Style and Helvetica Neue, which exist
+ * only on macOS — on Windows and Linux the system silently fell back to
+ * Georgia and Arial and stopped looking like itself.
+ */
+@import '@ds/shared/fonts/fraunces.css';
+@import '@ds/shared/fonts/archivo.css';
+
 :root,
 [data-ds-theme='light'] {
   color-scheme: light;
@@ -70,8 +80,8 @@
   --ds-radius-full: 999px;
 
   /* ---- Typography ---- */
-  --ds-font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --ds-font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --ds-font-sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --ds-font-display: 'Fraunces', 'Iowan Old Style', Palatino, Georgia, serif;
   --ds-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --ds-text-xs: 0.75rem;
@@ -87,6 +97,10 @@
   --ds-leading-normal: 1.5;
   --ds-leading-loose: 1.7;
   --ds-tracking-display: -0.035em;
+  /* Fraunces, tuned rather than used at stock: maximum optical size for the
+     high-contrast display cut, WONK on for the characterful alternates, and a
+     touch of SOFT to keep the terminals from feeling brittle at 7rem. */
+  --ds-font-display-settings: 'opsz' 144, 'SOFT' 18, 'WONK' 1;
 
   --ds-weight-regular: 400;
   --ds-weight-medium: 500;

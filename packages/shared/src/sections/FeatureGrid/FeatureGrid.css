@@ -55,6 +55,7 @@
 .ds-feature__title {
   margin: 0;
   font-family: var(--ds-font-display);
+  font-variation-settings: var(--ds-font-display-settings);
   font-size: var(--ds-text-xl);
   font-weight: var(--ds-weight-semibold);
   line-height: var(--ds-leading-tight);

@@ -98,6 +98,7 @@
   --ds-leading-normal: 1.55;
   --ds-leading-loose: 1.7;
   --ds-tracking-display: -0.03em;
+  --ds-font-display-settings: normal;
 
   --ds-weight-regular: 400;
   --ds-weight-medium: 500;

@@ -15,6 +15,7 @@
   gap: var(--ds-space-lg);
   padding-block: var(--ds-space-lg);
   font-family: var(--ds-font-display);
+  font-variation-settings: var(--ds-font-display-settings);
   font-size: var(--ds-text-lg);
   font-weight: var(--ds-weight-semibold);
   line-height: var(--ds-leading-normal);

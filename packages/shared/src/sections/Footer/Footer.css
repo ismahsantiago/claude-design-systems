@@ -22,6 +22,7 @@
 
 .ds-footer__brand {
   font-family: var(--ds-font-display);
+  font-variation-settings: var(--ds-font-display-settings);
   font-size: var(--ds-text-lg);
   font-weight: var(--ds-weight-bold);
   letter-spacing: var(--ds-tracking-display);

@@ -77,6 +77,7 @@ export const STARTER_LIGHT = {
   '--ds-leading-normal': '1.5',
   '--ds-leading-loose': '1.65',
   '--ds-tracking-display': '-0.02em',
+  '--ds-font-display-settings': 'normal',
 
   '--ds-weight-regular': '400',
   '--ds-weight-medium': '500',

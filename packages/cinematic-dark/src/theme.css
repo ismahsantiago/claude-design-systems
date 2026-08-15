@@ -104,6 +104,9 @@
   --ds-leading-normal: 1.55;
   --ds-leading-loose: 1.7;
   --ds-tracking-display: -0.04em;
+  /* Bricolage at full optical size and slightly narrow: the display face
+     is set for 140px, not for a paragraph. */
+  --ds-font-display-settings: 'opsz' 96, 'wdth' 92;
 
   --ds-weight-regular: 400;
   --ds-weight-medium: 500;

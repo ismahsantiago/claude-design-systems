@@ -27,6 +27,7 @@
 .ds-section-header__title {
   margin: 0;
   font-family: var(--ds-font-display);
+  font-variation-settings: var(--ds-font-display-settings);
   font-size: var(--ds-text-3xl);
   font-weight: var(--ds-weight-bold);
   line-height: var(--ds-leading-tight);

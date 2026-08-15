@@ -10,6 +10,15 @@
  * Every token named in `@ds/shared/contract` is answered below.
  */
 
+/*
+ * Self-hosted faces, first: `@import` is only legal before other rules.
+ *
+ * This replaces Avenir Next, which ships only on macOS — everywhere else the
+ * system fell through to the default UI sans and lost the warmth the whole
+ * theme is built around.
+ */
+@import '@ds/shared/fonts/figtree.css';
+
 :root,
 [data-ds-theme='light'] {
   color-scheme: light;
@@ -70,7 +79,7 @@
   --ds-radius-full: 999px;
 
   /* ---- Typography ---- */
-  --ds-font-sans: 'Avenir Next', Avenir, 'Nunito Sans', ui-rounded, system-ui, sans-serif;
+  --ds-font-sans: 'Figtree', 'Avenir Next', ui-rounded, system-ui, sans-serif;
   --ds-font-display: var(--ds-font-sans);
   --ds-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -87,6 +96,7 @@
   --ds-leading-normal: 1.6;
   --ds-leading-loose: 1.8;
   --ds-tracking-display: -0.015em;
+  --ds-font-display-settings: normal;
 
   --ds-weight-regular: 400;
   --ds-weight-medium: 500;

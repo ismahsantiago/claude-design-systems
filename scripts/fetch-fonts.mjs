@@ -40,6 +40,30 @@ const FAMILIES = [
     license: 'https://raw.githubusercontent.com/rsms/inter/master/LICENSE.txt',
   },
   {
+    // editorial-bold's display face. Chosen for its axes as much as its shape:
+    // SOFT and WONK let the system dial in a voice of its own rather than
+    // shipping the face at its defaults like everyone else does.
+    family: 'Fraunces',
+    slug: 'fraunces',
+    url: 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&display=swap',
+    license: 'https://raw.githubusercontent.com/undercasetype/Fraunces/master/OFL.txt',
+  },
+  {
+    // editorial-bold's body face. A grotesque with a width axis, so the system
+    // can set its own proportions instead of reaching for another weight.
+    family: 'Archivo',
+    slug: 'archivo',
+    url: 'https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap',
+    license: 'https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/OFL.txt',
+  },
+  {
+    // warm-consumer. Humanist, generous apertures, friendly without being cute.
+    family: 'Figtree',
+    slug: 'figtree',
+    url: 'https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap',
+    license: 'https://raw.githubusercontent.com/erikdkennedy/figtree/master/OFL.txt',
+  },
+  {
     // Stand-in for the commercial display faces named in the cinematic-dark
     // brief (PP Editorial New, Söhne Breit). A variable grotesque with real
     // character at 140px, where Inter goes generic. The commercial names stay

@@ -114,6 +114,11 @@ export const CONTRACT = [
       { name: '--ds-leading-normal', description: 'Body.' },
       { name: '--ds-leading-loose', description: 'Long-form reading.' },
       { name: '--ds-tracking-display', description: 'Letter-spacing on display type.' },
+      {
+        name: '--ds-font-display-settings',
+        description:
+          "Variable-font axis settings applied wherever --ds-font-display is used, e.g. \"'opsz' 144, 'SOFT' 20\". This is where a system stops using a face at its defaults and tunes it into a voice of its own; `normal` for static faces.",
+      },
       { name: '--ds-weight-regular', description: 'Body weight.' },
       { name: '--ds-weight-medium', description: 'Emphasis.' },
       { name: '--ds-weight-semibold', description: 'Headings.' },
