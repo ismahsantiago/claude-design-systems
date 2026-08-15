@@ -1,0 +1,49 @@
+.ds-checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--ds-space-sm);
+  cursor: pointer;
+}
+
+.ds-checkbox--disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/*
+ * The native control is kept and tinted with `accent-color` rather than
+ * rebuilt from a span: it stays keyboard- and screen-reader-correct for free,
+ * and picks up the indeterminate dash without extra markup.
+ */
+.ds-checkbox__input {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  margin-block-start: 2px;
+  accent-color: var(--ds-color-accent);
+  cursor: inherit;
+}
+
+.ds-checkbox__input[aria-invalid='true'] {
+  outline: 1px solid var(--ds-color-danger);
+  outline-offset: 1px;
+  border-radius: var(--ds-radius-sm);
+}
+
+.ds-checkbox__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2xs);
+}
+
+.ds-checkbox__label {
+  font-size: var(--ds-text-md);
+  color: var(--ds-color-text);
+  line-height: var(--ds-leading-normal);
+}
+
+.ds-checkbox__description {
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+}

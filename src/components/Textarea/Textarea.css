@@ -1,0 +1,15 @@
+/* Height comes from `rows`, so the fixed control heights are cleared here. */
+.ds-textarea {
+  height: auto;
+  padding: var(--ds-space-sm) var(--ds-space-md);
+  font-size: var(--ds-text-md);
+  line-height: var(--ds-leading-normal);
+}
+
+.ds-textarea--resize-none {
+  resize: none;
+}
+
+.ds-textarea--resize-vertical {
+  resize: vertical;
+}

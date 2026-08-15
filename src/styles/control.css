@@ -1,0 +1,56 @@
+/**
+ * Shared field-control surface. Input, Textarea and Select all render
+ * `.ds-control` so they line up pixel-for-pixel when stacked in a form.
+ */
+
+.ds-control {
+  display: block;
+  width: auto;
+  min-width: 0;
+  font-family: inherit;
+  color: var(--ds-color-text);
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border-strong);
+  border-radius: var(--ds-radius-md);
+  transition:
+    border-color var(--ds-duration-fast) var(--ds-ease),
+    background-color var(--ds-duration-fast) var(--ds-ease);
+}
+
+.ds-control::placeholder {
+  color: var(--ds-color-text-muted);
+}
+
+.ds-control:hover:not(:disabled):not([aria-invalid='true']) {
+  border-color: var(--ds-color-text-muted);
+}
+
+.ds-control:disabled {
+  background: var(--ds-color-surface-sunken);
+  color: var(--ds-color-text-muted);
+  cursor: not-allowed;
+}
+
+.ds-control[aria-invalid='true'] {
+  border-color: var(--ds-color-danger);
+}
+
+.ds-control--sm {
+  height: var(--ds-control-height-sm);
+  padding-inline: var(--ds-space-sm);
+  font-size: var(--ds-text-sm);
+}
+.ds-control--md {
+  height: var(--ds-control-height-md);
+  padding-inline: var(--ds-space-md);
+  font-size: var(--ds-text-md);
+}
+.ds-control--lg {
+  height: var(--ds-control-height-lg);
+  padding-inline: var(--ds-space-lg);
+  font-size: var(--ds-text-lg);
+}
+
+.ds-control--full-width {
+  width: 100%;
+}

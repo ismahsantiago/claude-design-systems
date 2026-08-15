@@ -1,0 +1,36 @@
+.ds-heading {
+  margin: 0;
+  font-family: var(--ds-font-sans);
+  font-weight: var(--ds-weight-semibold);
+  line-height: var(--ds-leading-tight);
+  color: var(--ds-color-text);
+  letter-spacing: -0.01em;
+}
+
+.ds-heading--sm {
+  font-size: var(--ds-text-lg);
+}
+.ds-heading--md {
+  font-size: var(--ds-text-xl);
+}
+.ds-heading--lg {
+  font-size: var(--ds-text-2xl);
+}
+.ds-heading--xl {
+  font-size: var(--ds-text-3xl);
+  font-weight: var(--ds-weight-bold);
+}
+
+.ds-heading--tone-default {
+  color: var(--ds-color-text);
+}
+
+.ds-heading--tone-muted {
+  color: var(--ds-color-text-muted);
+}
+
+.ds-heading--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

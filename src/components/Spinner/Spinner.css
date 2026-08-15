@@ -1,0 +1,36 @@
+.ds-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-spinner__ring {
+  display: block;
+  border-radius: var(--ds-radius-full);
+  border-style: solid;
+  border-color: currentColor;
+  border-top-color: transparent;
+  animation: ds-spin 700ms linear infinite;
+}
+
+.ds-spinner--sm .ds-spinner__ring {
+  width: 12px;
+  height: 12px;
+  border-width: 1.5px;
+}
+.ds-spinner--md .ds-spinner__ring {
+  width: 18px;
+  height: 18px;
+  border-width: 2px;
+}
+.ds-spinner--lg .ds-spinner__ring {
+  width: 26px;
+  height: 26px;
+  border-width: 3px;
+}
+
+@keyframes ds-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

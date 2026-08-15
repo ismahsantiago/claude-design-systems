@@ -1,0 +1,102 @@
+.ds-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-sm);
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-md);
+  font-family: inherit;
+  font-weight: var(--ds-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--ds-duration-fast) var(--ds-ease),
+    border-color var(--ds-duration-fast) var(--ds-ease),
+    color var(--ds-duration-fast) var(--ds-ease);
+}
+
+.ds-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* ---------- sizes ---------- */
+.ds-button--sm {
+  height: var(--ds-control-height-sm);
+  padding-inline: var(--ds-space-md);
+  font-size: var(--ds-text-sm);
+}
+.ds-button--md {
+  height: var(--ds-control-height-md);
+  padding-inline: var(--ds-space-lg);
+  font-size: var(--ds-text-md);
+}
+.ds-button--lg {
+  height: var(--ds-control-height-lg);
+  padding-inline: var(--ds-space-xl);
+  font-size: var(--ds-text-lg);
+}
+
+.ds-button--full-width {
+  width: 100%;
+}
+
+/* ---------- variants ---------- */
+.ds-button--primary {
+  background: var(--ds-color-accent);
+  color: var(--ds-color-text-on-accent);
+}
+.ds-button--primary:hover:not(:disabled) {
+  background: var(--ds-color-accent-hover);
+}
+.ds-button--primary:active:not(:disabled) {
+  background: var(--ds-color-accent-active);
+}
+
+.ds-button--secondary {
+  background: var(--ds-color-surface);
+  border-color: var(--ds-color-border-strong);
+  color: var(--ds-color-text);
+}
+.ds-button--secondary:hover:not(:disabled) {
+  background: var(--ds-color-surface-hover);
+}
+
+.ds-button--ghost {
+  background: transparent;
+  color: var(--ds-color-text);
+}
+.ds-button--ghost:hover:not(:disabled) {
+  background: var(--ds-color-surface-hover);
+}
+
+.ds-button--danger {
+  background: var(--ds-color-danger);
+  color: var(--ds-color-text-on-accent);
+}
+.ds-button--danger:hover:not(:disabled) {
+  background: var(--ds-color-danger-hover);
+}
+
+/* ---------- loading ---------- */
+.ds-button--loading .ds-button__label,
+.ds-button--loading .ds-button__icon {
+  visibility: hidden;
+}
+
+.ds-button__spinner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-button__icon {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}

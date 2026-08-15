@@ -1,0 +1,28 @@
+.ds-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-xs);
+  min-width: 0;
+}
+
+.ds-field__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2xs);
+  font-size: var(--ds-text-sm);
+  font-weight: var(--ds-weight-medium);
+  color: var(--ds-color-text);
+}
+
+.ds-field__required {
+  color: var(--ds-color-danger-text);
+}
+
+.ds-field__message {
+  font-size: var(--ds-text-xs);
+  color: var(--ds-color-text-muted);
+}
+
+.ds-field__message--error {
+  color: var(--ds-color-danger-text);
+}

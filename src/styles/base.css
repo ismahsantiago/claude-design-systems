@@ -1,0 +1,54 @@
+/**
+ * Base layer. Scoped to `.ds-root` (the element ThemeProvider renders) rather
+ * than applied globally, so dropping this design system into an existing app
+ * never restyles that app's own markup.
+ */
+
+.ds-root {
+  font-family: var(--ds-font-sans);
+  font-size: var(--ds-text-md);
+  line-height: var(--ds-leading-normal);
+  color: var(--ds-color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.ds-root--full-bleed {
+  min-height: 100%;
+  background: var(--ds-color-bg);
+}
+
+.ds-root *,
+.ds-root *::before,
+.ds-root *::after {
+  box-sizing: border-box;
+}
+
+/* Every focusable control in the system shares one focus treatment. */
+.ds-root :focus-visible {
+  outline: 2px solid var(--ds-color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--ds-radius-sm);
+}
+
+/* Visually hidden, still read by assistive tech. */
+.ds-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-root *,
+  .ds-root *::before,
+  .ds-root *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

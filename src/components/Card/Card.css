@@ -1,0 +1,77 @@
+.ds-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-lg);
+  overflow: hidden;
+}
+
+.ds-card--flat {
+  box-shadow: none;
+}
+
+.ds-card--raised {
+  box-shadow: var(--ds-shadow-md);
+}
+
+.ds-card--interactive {
+  cursor: pointer;
+  transition:
+    border-color var(--ds-duration-fast) var(--ds-ease),
+    box-shadow var(--ds-duration-fast) var(--ds-ease);
+}
+
+.ds-card--interactive:hover {
+  border-color: var(--ds-color-border-strong);
+  box-shadow: var(--ds-shadow-md);
+}
+
+.ds-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ds-space-md);
+  padding: var(--ds-card-padding);
+}
+
+/* The body loses its top padding when a header already supplied it. */
+.ds-card__header + .ds-card__body {
+  padding-block-start: 0;
+}
+
+.ds-card__titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2xs);
+  min-width: 0;
+}
+
+.ds-card__title {
+  font-size: var(--ds-text-lg);
+  font-weight: var(--ds-weight-semibold);
+  color: var(--ds-color-text);
+  line-height: var(--ds-leading-tight);
+}
+
+.ds-card__subtitle {
+  font-size: var(--ds-text-sm);
+  color: var(--ds-color-text-muted);
+}
+
+.ds-card__action {
+  flex: none;
+}
+
+.ds-card__body {
+  padding: var(--ds-card-padding);
+  color: var(--ds-color-text);
+  min-width: 0;
+}
+
+.ds-card__footer {
+  padding: var(--ds-card-padding);
+  border-block-start: 1px solid var(--ds-color-border);
+  background: var(--ds-color-surface-sunken);
+}

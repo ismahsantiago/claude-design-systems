@@ -1,0 +1,71 @@
+.ds-text {
+  margin: 0;
+  font-family: var(--ds-font-sans);
+  line-height: var(--ds-leading-normal);
+  color: var(--ds-color-text);
+}
+
+.ds-text--xs {
+  font-size: var(--ds-text-xs);
+}
+.ds-text--sm {
+  font-size: var(--ds-text-sm);
+}
+.ds-text--md {
+  font-size: var(--ds-text-md);
+}
+.ds-text--lg {
+  font-size: var(--ds-text-lg);
+}
+
+.ds-text--weight-regular {
+  font-weight: var(--ds-weight-regular);
+}
+.ds-text--weight-medium {
+  font-weight: var(--ds-weight-medium);
+}
+.ds-text--weight-semibold {
+  font-weight: var(--ds-weight-semibold);
+}
+.ds-text--weight-bold {
+  font-weight: var(--ds-weight-bold);
+}
+
+.ds-text--tone-default {
+  color: var(--ds-color-text);
+}
+.ds-text--tone-muted {
+  color: var(--ds-color-text-muted);
+}
+.ds-text--tone-accent {
+  color: var(--ds-color-accent-text);
+}
+.ds-text--tone-success {
+  color: var(--ds-color-success-text);
+}
+.ds-text--tone-warning {
+  color: var(--ds-color-warning-text);
+}
+.ds-text--tone-danger {
+  color: var(--ds-color-danger-text);
+}
+
+.ds-text--align-start {
+  text-align: start;
+}
+.ds-text--align-center {
+  text-align: center;
+}
+.ds-text--align-end {
+  text-align: end;
+}
+
+.ds-text--mono {
+  font-family: var(--ds-font-mono);
+}
+
+.ds-text--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

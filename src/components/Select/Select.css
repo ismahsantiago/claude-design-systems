@@ -1,0 +1,25 @@
+.ds-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.ds-select--full-width {
+  display: flex;
+  width: 100%;
+}
+
+/* Room for the chevron; the native arrow is replaced by our own. */
+.ds-select__input {
+  appearance: none;
+  padding-inline-end: var(--ds-space-2xl);
+  cursor: pointer;
+}
+
+.ds-select__chevron {
+  position: absolute;
+  inset-inline-end: var(--ds-space-sm);
+  pointer-events: none;
+  color: var(--ds-color-text-muted);
+}

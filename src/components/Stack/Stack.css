@@ -1,0 +1,8 @@
+.ds-stack {
+  display: flex;
+  min-width: 0;
+}
+
+.ds-stack--full-width {
+  width: 100%;
+}
