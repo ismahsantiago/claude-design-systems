@@ -56,7 +56,9 @@ A variant inherits a base whole and restates only colour, gradients, faces, radi
 npm run new-variant -- cinematic-dark cinematic-dark-slate "Cinematic Dark Slate" "Grey, gradient from the left."
 ```
 
-It exists for a loop: generate a page with the base in Claude Design, ask for a recolour, approve it visually, land it here, sync it as its own project. See `docs/variants.md`.
+It exists for a loop: generate a page with the base in Claude Design, ask for a recolour, approve it visually, land it here, sync it as its own project.
+
+What a variant may restate is defined by `EXPRESSIVE_TOKENS` in `packages/shared/contract.mjs`. Spacing, control heights and status colours are deliberately absent — moving those makes a different system, not a variant of one. Rules are never restated either, so a family keeps one silhouette.
 
 ## Making a new one
 
@@ -67,7 +69,9 @@ npm install
 npm run check
 ```
 
-The generated theme is emitted **from the contract**, so a new system is structurally complete on its first build — every token present, grouped and commented. The work is deciding values, and `docs/creating-a-system.md` says which four to decide first.
+The generated theme is emitted **from the contract**, so a new system is structurally complete on its first build — every token present, grouped and commented. The work is deciding values.
+
+Four of them carry most of a system's identity, so decide these first: `--ds-radius-*` (software, standard, or friendly), `--ds-text-display` (how much the hero dominates), `--ds-section-gap` (density) and `--ds-color-accent`. Then `--ds-font-display`, `--ds-font-display-settings` and `--ds-shadow-*`.
 
 ## Fonts
 
@@ -91,4 +95,6 @@ All five are failure modes that are invisible in review and obvious in productio
 
 ## Syncing to Claude Design
 
-`/design-sync`, run from a package directory, uploads that system to [claude.ai/design](https://claude.ai/design) so the design agent builds pages from its real components. One system per project. See `docs/syncing.md`.
+`/design-sync`, run from a package directory, uploads that system to [claude.ai/design](https://claude.ai/design) so the design agent builds pages from its real components. One system per project — a project holding two would give the design agent two conflicting answers for every token.
+
+The build is already shaped for it: `@ds/shared` is bundled rather than external so each system ships its own compiled components, all CSS collapses into one `dist/styles.css`, and `vite-plugin-dts` emits one `.d.ts` per component with an exported `<Name>Props`.

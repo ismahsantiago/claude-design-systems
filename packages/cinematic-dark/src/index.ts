@@ -7,7 +7,7 @@
  * follows module import order.
  *
  * A variant of this system repeats this shape, adding its own token file after
- * the base theme. See docs/variants.md.
+ * the base theme.
  */
 import './theme.css';
 

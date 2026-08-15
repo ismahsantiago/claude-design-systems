@@ -15,7 +15,7 @@
  * same palette, deliberately. The two selectors are kept rather than collapsed
  * so `ThemeProvider` and the toggle keep working; they simply agree.
  *
- * This is the base its variants extend — see docs/variants.md. Restating a
+ * This is the base its variants extend. Restating a
  * token in a variant is how it gets its own identity; everything left alone
  * keeps inheriting fixes from here.
  *

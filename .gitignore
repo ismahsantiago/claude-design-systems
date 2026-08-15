@@ -1,5 +1,43 @@
+# Build output
 node_modules/
 dist/
 storybook-static/
-*.log
+*.tsbuildinfo
+
+# Internal working documents. These stay on disk and keep working locally —
+# they are simply not part of the public repository.
+CLAUDE.md
+docs/
+
+# Claude Design sync state: project ids and per-repo notes.
+.design-sync/
+
+# Editor and OS
+.idea/
+.vscode/
+.fleet/
 .DS_Store
+Thumbs.db
+*.swp
+
+# Secrets and local environment. Nothing here today; listed so nothing lands
+# here by accident later.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+.npmrc
+.netrc
+
+# Scratch. The restructure once left a stray .tmp-tokens.css in a commit;
+# this is why.
+*.tmp
+*.tmp.*
+.tmp-*
+tmp/
+*.log
+npm-debug.log*
+.eslintcache
+coverage/
