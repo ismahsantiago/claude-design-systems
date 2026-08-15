@@ -2,7 +2,7 @@
  * Scaffolds a variant of an existing system.
  *
  *   npm run new-variant -- <base> <name> ["Display Title"] ["Tagline"]
- *   npm run new-variant -- nocturne nocturne-cobalt "Nocturne Cobalt" "Cold blue…"
+ *   npm run new-variant -- cinematic-dark cinematic-dark-cobalt "Cinematic Dark Cobalt" "Cold blue…"
  *
  * A variant inherits its base entirely and restates only the expressive
  * surface — accent, gradients, faces, radius, display scale. That is the

@@ -1,11 +1,11 @@
 {
-  "name": "@ds/warm-consumer",
+  "name": "@ds/technical-dark",
   "version": "0.1.0",
   "private": true,
-  "description": "Earthy palette, generous curves, soft shadows — a product that feels friendly.",
+  "description": "Dark by default, monospace accents, dense and precise.",
   "designSystem": {
-    "title": "Warm Consumer",
-    "tagline": "Earthy palette, generous curves, soft shadows — a product that feels friendly."
+    "title": "Technical Dark",
+    "tagline": "Dark by default, monospace accents, dense and precise."
   },
   "type": "module",
   "sideEffects": [

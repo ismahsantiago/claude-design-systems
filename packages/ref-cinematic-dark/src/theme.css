@@ -1,0 +1,141 @@
+/**
+ * Cinematic Dark (reference study) — film-grade dark UI, oversized display type, media-first.
+ *
+ * A REFERENCE STUDY, kept deliberately. It is built to a brief written after a
+ * public creator-tools site, down to that site's magenta and cyan, and it
+ * exists so the register can be seen and compared — not so it can be shipped
+ * as anyone's identity. `@ds/cinematic-dark` is the system we actually own, and the
+ * one to build products and variants on.
+ *
+ * The demo brand in its story is invented for the same reason.
+ *
+ * The page is a movie poster: type is large, media is the subject, and the
+ * canvas is pure black so nothing competes with it.
+ *
+ * THIS SYSTEM HAS NO LIGHT MODE. Both `data-ds-theme` values resolve to the
+ * same dark palette, deliberately — a light variant would contradict the whole
+ * premise. The two blocks are kept rather than collapsed so `ThemeProvider`
+ * and the toggle keep working; they simply agree.
+ *
+ * Every token named in `@ds/shared/contract` is answered below.
+ */
+
+/*
+ * Self-hosted faces. These must come first: `@import` is only legal before
+ * other rules, and the bundler preserves that order into `dist/styles.css`.
+ *
+ * The display stack still names PP Editorial New and Söhne Breit ahead of
+ * Bricolage Grotesque. Those two are commercial and are not shipped here; add
+ * a `@font-face` for them (see packages/shared/fonts/README.md) and they take
+ * over with no change to the tokens below.
+ */
+@import '@ds/shared/fonts/inter.css';
+@import '@ds/shared/fonts/bricolage-grotesque.css';
+@import '@ds/shared/fonts/jetbrains-mono.css';
+
+:root,
+[data-ds-theme='light'],
+[data-ds-theme='dark'] {
+  color-scheme: dark;
+
+  /* ---- Surface & border ---- */
+  --ds-color-bg: #000000;
+  --ds-color-surface: #141414;
+  --ds-color-surface-sunken: #0a0a0a;
+  --ds-color-surface-hover: #1f1f1f;
+  --ds-color-border: #2a2a2a;
+  --ds-color-border-strong: #3d3d3d;
+
+  /* ---- Text ---- */
+  --ds-color-text: #f5f5f5;
+  --ds-color-text-muted: #a8a8a8;
+  --ds-color-text-on-accent: #ffffff;
+
+  /* ---- Accent: saturated magenta, with electric cyan as the counterweight ---- */
+  --ds-color-accent: #ff2d8e;
+  --ds-color-accent-hover: #ff529f;
+  --ds-color-accent-active: #ff7ab5;
+  --ds-color-accent-subtle: #2a0a1a;
+  --ds-color-accent-text: #ff6aa8;
+
+  /* ---- Status ---- */
+  --ds-color-success: #00e5ff;
+  --ds-color-success-subtle: #062a30;
+  --ds-color-success-text: #5eeeff;
+  --ds-color-warning: #ff6b35;
+  --ds-color-warning-subtle: #2e1408;
+  --ds-color-warning-text: #ff9166;
+  --ds-color-danger: #f72585;
+  --ds-color-danger-hover: #ff5aa3;
+  --ds-color-danger-subtle: #2c0718;
+  --ds-color-danger-text: #ff6aa8;
+  --ds-color-focus-ring: #ff2d8e;
+  --ds-color-overlay: rgb(0 0 0 / 0.75);
+
+  /* ---- Space ---- */
+  --ds-space-none: 0;
+  --ds-space-2xs: 2px;
+  --ds-space-xs: 4px;
+  --ds-space-sm: 8px;
+  --ds-space-md: 12px;
+  --ds-space-lg: 20px;
+  --ds-space-xl: 32px;
+  --ds-space-2xl: 48px;
+  --ds-space-3xl: 72px;
+
+  /* ---- Section rhythm: 120–160px between full-bleed bands ---- */
+  --ds-section-gap: 140px;
+  --ds-container-width: 1360px;
+
+  /* ---- Radius: pills come from an override; these stay tight ---- */
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 16px;
+  --ds-radius-full: 999px;
+
+  /* ---- Typography: 14 / 16 / 18 / 24 / 40 / 64 / 96 / 140 ---- */
+  --ds-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --ds-font-display: 'PP Editorial New', 'Söhne Breit', 'Bricolage Grotesque',
+    'Inter', ui-sans-serif, system-ui, sans-serif;
+  --ds-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ds-text-xs: 0.875rem;
+  --ds-text-sm: 1rem;
+  --ds-text-md: 1.125rem;
+  --ds-text-lg: 1.5rem;
+  --ds-text-xl: 2.5rem;
+  --ds-text-2xl: 4rem;
+  --ds-text-3xl: 6rem;
+  --ds-text-display: clamp(3rem, 11vw, 8.75rem);
+
+  --ds-leading-tight: 0.94;
+  --ds-leading-normal: 1.55;
+  --ds-leading-loose: 1.7;
+  --ds-tracking-display: -0.04em;
+  /* Bricolage at full optical size and slightly narrow: the display face
+     is set for 140px, not for a paragraph. */
+  --ds-font-display-settings: 'opsz' 96, 'wdth' 92;
+
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-semibold: 500;
+  --ds-weight-bold: 400;
+
+  /* ---- Gradients: expected here, not merely allowed ---- */
+  --ds-gradient-accent: linear-gradient(135deg, #ff2d8e 0%, #a855f7 50%, #00e5ff 100%);
+  --ds-gradient-warm: linear-gradient(135deg, #ff6b35 0%, #f72585 100%);
+
+  /* ---- Elevation: deep and soft, plus an atmospheric glow ---- */
+  --ds-shadow-sm: 0 4px 16px rgb(0 0 0 / 0.4);
+  --ds-shadow-md: 0 12px 32px rgb(0 0 0 / 0.5);
+  --ds-shadow-lg: 0 24px 64px rgb(0 0 0 / 0.6);
+  --ds-shadow-glow: 0 0 16px rgb(255 45 142 / 0.4);
+  --ds-duration-fast: 200ms;
+  --ds-duration-md: 300ms;
+  --ds-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- Controls ---- */
+  --ds-control-height-sm: 36px;
+  --ds-control-height-md: 48px;
+  --ds-control-height-lg: 60px;
+}

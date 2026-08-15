@@ -1,11 +1,12 @@
 {
-  "name": "@ds/dark-technical",
+  "name": "@ds/ref-cinematic-dark",
   "version": "0.1.0",
   "private": true,
-  "description": "Dark by default, monospace accents, dense and precise.",
+  "description": "Film-grade dark UI, oversized display type, gradient accents, media-first.",
   "designSystem": {
-    "title": "Dark Technical",
-    "tagline": "Dark by default, monospace accents, dense and precise."
+    "title": "Cinematic Dark (reference study)",
+    "tagline": "A palette-and-type study after a public creator-tools site. Kept for comparison, not to build on \u2014 use @ds/cinematic-dark.",
+    "reference": true
   },
   "type": "module",
   "sideEffects": [
@@ -20,7 +21,9 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./theme.css": "./src/theme.css",
+    "./overrides.css": "./src/overrides.css"
   },
   "scripts": {
     "build": "vite build",

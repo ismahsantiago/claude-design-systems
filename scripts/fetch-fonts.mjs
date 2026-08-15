@@ -57,14 +57,14 @@ const FAMILIES = [
     license: 'https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/OFL.txt',
   },
   {
-    // warm-consumer. Humanist, generous apertures, friendly without being cute.
+    // consumer-warm. Humanist, generous apertures, friendly without being cute.
     family: 'Figtree',
     slug: 'figtree',
     url: 'https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap',
     license: 'https://raw.githubusercontent.com/erikdkennedy/figtree/master/OFL.txt',
   },
   {
-    // Stand-in for the commercial display faces named in the cinematic-dark
+    // Stand-in for the commercial display faces named in the ref-cinematic-dark
     // brief (PP Editorial New, Söhne Breit). A variable grotesque with real
     // character at 140px, where Inter goes generic. The commercial names stay
     // ahead of it in the font stack, so dropping in licensed files wins

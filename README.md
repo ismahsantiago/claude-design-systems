@@ -15,12 +15,20 @@ Each renders the **same landing page with the same copy**, so everything that di
 | Package | Register | Signature |
 | --- | --- | --- |
 | `@ds/saas-clean` | Modern SaaS | Airy neutrals, one confident blue, soft 12px corners |
-| `@ds/editorial-bold` | Agency / magazine | Zero radius, no shadows, serif display type up to 7rem |
-| `@ds/warm-consumer` | Consumer brand | Warm neutrals, terracotta, 24px curves, wide soft shadows |
-| `@ds/dark-technical` | Developer tool | Dark by default, monospace headlines, tight density, cyan accent |
-| `@ds/nocturne` | Creator tool / film | Pure black, ember→violet gradients, wide grotesque display to 132px, media-first |
-| `@ds/nocturne-cobalt` | *variant of nocturne* | The same system at midnight: cobalt accents, cooled neutrals, everything else inherited |
-| `@ds/cinematic-dark` | *reference study* | Built to a brief written after a public creator-tools site. Kept for comparison, not to ship — see the note in its `theme.css` |
+| `@ds/editorial-bold` | Agency / magazine | Zero radius, no shadows, Fraunces at opsz 144 up to 7rem |
+| `@ds/consumer-warm` | Consumer brand | Warm neutrals, terracotta, 24px curves, wide soft shadows |
+| `@ds/technical-dark` | Developer tool | Dark by default, monospace headlines, tight density, cyan accent |
+| `@ds/cinematic-dark` | Creator tool / film | Pure black, ember→violet gradients, wide grotesque display to 132px |
+| `@ds/cinematic-dark-cobalt` | *variant* | The same system at midnight: cobalt accents, cooled neutrals, everything else inherited |
+| `@ds/ref-cinematic-dark` | *reference study* | Built to a brief written after a public creator-tools site. Kept for comparison, not to build on |
+
+## Naming
+
+Names have to survive the list growing, so they follow one scheme and `npm run verify` enforces it.
+
+- **Base systems are `<register>-<quality>`** — register first, always. The quality must be one a variant *cannot* change (canvas, density, weight), never the accent, or the first recolour makes the name a lie.
+- **Variants are `<base>-<what-changed>`**, at most two segments. `cinematic-dark-cobalt`. Past two the name stops communicating and the thing wants to be its own system.
+- **Reference studies take a `ref-` prefix** and `designSystem.reference: true`. The prefix says "look, do not build on this" before anyone opens a file.
 
 ## How it works
 
@@ -28,7 +36,7 @@ Each renders the **same landing page with the same copy**, so everything that di
 
 A system is therefore *a set of answers*, not a fork. Five systems cost roughly one system's worth of maintenance, and a new one is a single stylesheet.
 
-When a system needs something the contract genuinely cannot express — a *rule* rather than a *value* — it ships an `overrides.css` loaded after the shared component styles. `@ds/cinematic-dark` is the worked example: pill buttons (one radius token cannot serve both buttons and inputs), gradient-clipped display type, and a focus glow are all rules, and each override says in a comment why it is not a token.
+When a system needs something the contract genuinely cannot express — a *rule* rather than a *value* — it ships an `overrides.css` loaded after the shared component styles. `@ds/ref-cinematic-dark` is the worked example: pill buttons (one radius token cannot serve both buttons and inputs), gradient-clipped display type, and a focus glow are all rules, and each override says in a comment why it is not a token.
 
 The contract deliberately includes radius, type scale and section rhythm rather than just color: a system that can only change hue can only ever look recolored, while one that owns the geometry and the typography reads as genuinely different.
 
@@ -42,10 +50,10 @@ Everything renders inside a `ThemeProvider` — it owns the `.ds-root` element t
 
 ## Variants
 
-A variant inherits a base whole and restates only colour, gradients, faces, radius and display scale — `@ds/nocturne-cobalt` is eleven lines on top of `@ds/nocturne`.
+A variant inherits a base whole and restates only colour, gradients, faces, radius and display scale — `@ds/cinematic-dark-cobalt` is eleven lines on top of `@ds/cinematic-dark`.
 
 ```bash
-npm run new-variant -- nocturne nocturne-slate "Nocturne Slate" "Grey, gradient from the left."
+npm run new-variant -- cinematic-dark cinematic-dark-slate "Cinematic Dark Slate" "Grey, gradient from the left."
 ```
 
 It exists for a loop: generate a page with the base in Claude Design, ask for a recolour, approve it visually, land it here, sync it as its own project. See `docs/variants.md`.
@@ -67,7 +75,7 @@ The generated theme is emitted **from the contract**, so a new system is structu
 
 Vite's library mode inlines CSS-referenced assets as `data:` URIs and ignores `assetsInlineLimit` while doing it, which turned one stylesheet into 534 kB that barely gzipped. `scripts/externalize-fonts.mjs` undoes that after the write, so fonts stay cacheable and `styles.css` is 35 kB.
 
-The commercial faces named in the `cinematic-dark` brief — PP Editorial New, Söhne Breit — are not redistributable and are not shipped. They stay at the front of `--ds-font-display` so licensed files take over as a pure drop-in. See `packages/shared/fonts/README.md`.
+The commercial faces named in the `ref-cinematic-dark` brief — PP Editorial New, Söhne Breit — are not redistributable and are not shipped. They stay at the front of `--ds-font-display` so licensed files take over as a pure drop-in. See `packages/shared/fonts/README.md`.
 
 ## Validation
 

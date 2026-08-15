@@ -1,10 +1,10 @@
 /**
- * Nocturne Cobalt — cold blue on black: the same system at midnight instead of
+ * Cinematic Dark Cobalt — cold blue on black: the same system at midnight instead of
  * by firelight.
  *
- * A VARIANT of `nocturne`. It imports that system whole and restates only what
+ * A VARIANT of `cinematic-dark`. It imports that system whole and restates only what
  * is listed below. Everything else — spacing, type, radius, control heights,
- * status colours, and every rule in nocturne's overrides — is inherited, so a
+ * status colours, and every rule in cinematic-dark's overrides — is inherited, so a
  * fix to the base reaches here without being copied.
  *
  * This file is what a finished variant looks like: eleven lines of intent.
@@ -12,11 +12,11 @@
  * starting point; the work is deleting everything you are not changing.
  *
  * Nothing about type or geometry moves. The silhouette of a Cobalt page and a
- * Nocturne page are identical — only the temperature differs, which is exactly
+ * Cinematic Dark page are identical — only the temperature differs, which is exactly
  * what makes them read as one family.
  */
 
-@import '@ds/nocturne/theme.css';
+@import '@ds/cinematic-dark/theme.css';
 
 :root,
 [data-ds-theme='light'],

@@ -50,6 +50,21 @@ if (systems.length === 0) {
   process.exit(1);
 }
 
+/** One system's verdict, in the shape every path prints. */
+function reportSystem(system, results, selfHosted) {
+  const suffix = selfHosted.length
+    ? ` ${DIM}self-hosting ${selfHosted.join(', ')}${RESET}`
+    : ` ${DIM}system fonts only${RESET}`;
+  console.log(`\n${BOLD}${system}${RESET}${suffix}`);
+  for (const { ok, label, detail } of results) {
+    console.log(`${ok ? GREEN + 'PASS' : RED + 'FAIL'}${RESET}  ${label}`);
+    if (!ok && detail?.length) {
+      for (const item of detail.slice(0, 12)) console.log(`      ${DIM}${item}${RESET}`);
+      if (detail.length > 12) console.log(`      ${DIM}…and ${detail.length - 12} more${RESET}`);
+    }
+  }
+}
+
 let failedSystems = 0;
 
 for (const system of systems) {
@@ -59,9 +74,62 @@ for (const system of systems) {
 
   const record = (ok, label, detail) => results.push({ ok, label, detail });
 
+  // ---- naming convention ----
+  // A scheme only stays a scheme if something enforces it, and names are what
+  // every future reader sees before they see anything else. Checked here
+  // rather than in the generators because packages get renamed and
+  // hand-edited long after they are created.
+  //
+  // Deliberately ahead of the dist/ check below: naming does not depend on a
+  // build, and a misnamed package is most likely a brand new one that has
+  // never been built. Bailing out first would hide the very case this exists
+  // for.
+  const manifest = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));
+  const variantOf = manifest.designSystem?.variantOf;
+  const nameProblems = [];
+
+  if (manifest.name !== `@ds/${system}`) {
+    nameProblems.push(`package.json name is ${manifest.name}, expected @ds/${system}`);
+  }
+
+  if (variantOf) {
+    // A variant must read as its base plus what changed, so the family is
+    // obvious from an alphabetical listing.
+    if (!system.startsWith(`${variantOf}-`)) {
+      nameProblems.push(`variant of ${variantOf} must be named ${variantOf}-<change>`);
+    } else {
+      const suffix = system.slice(variantOf.length + 1).split('-');
+      if (suffix.length > 2) {
+        nameProblems.push(
+          `variant suffix "${suffix.join('-')}" names ${suffix.length} changes; ` +
+            'keep it to 2 — past that the name stops communicating and it wants to be its own system',
+        );
+      }
+    }
+  } else {
+    // Base systems are <register>-<quality>: register first, always, and the
+    // quality must be one a variant cannot change (canvas, density, weight) —
+    // never the accent, or the first recolour makes the name a lie.
+    const bare = system.replace(/^ref-/, '');
+    if (bare.split('-').length !== 2) {
+      nameProblems.push(
+        `"${system}" should be <register>-<quality>, e.g. saas-clean (optionally ref-prefixed)`,
+      );
+    }
+  }
+
+  if (system.startsWith('ref-') && !manifest.designSystem?.reference) {
+    nameProblems.push('ref- prefix requires designSystem.reference: true in package.json');
+  }
+  if (manifest.designSystem?.reference && !system.startsWith('ref-')) {
+    nameProblems.push('a reference study must be named ref-<register>-<quality>');
+  }
+
+  record(nameProblems.length === 0, 'name follows the scheme', nameProblems);
+
   if (!existsSync(dist)) {
-    console.log(`\n${BOLD}${system}${RESET}`);
-    console.log(`${RED}FAIL${RESET}  no dist/ — run \`npm run build\` first`);
+    record(false, 'built — run `npm run build` first', []);
+    reportSystem(system, results, []);
     failedSystems += 1;
     continue;
   }
@@ -166,19 +234,7 @@ for (const system of systems) {
   const failures = results.filter((result) => !result.ok);
   if (failures.length > 0) failedSystems += 1;
 
-  console.log(
-    `\n${BOLD}${system}${RESET}` +
-      (selfHosted.length
-        ? ` ${DIM}self-hosting ${selfHosted.join(', ')}${RESET}`
-        : ` ${DIM}system fonts only${RESET}`),
-  );
-  for (const { ok, label, detail } of results) {
-    console.log(`${ok ? GREEN + 'PASS' : RED + 'FAIL'}${RESET}  ${label}`);
-    if (!ok && detail?.length) {
-      for (const item of detail.slice(0, 12)) console.log(`      ${DIM}${item}${RESET}`);
-      if (detail.length > 12) console.log(`      ${DIM}…and ${detail.length - 12} more${RESET}`);
-    }
-  }
+  reportSystem(system, results, selfHosted);
 }
 
 console.log(

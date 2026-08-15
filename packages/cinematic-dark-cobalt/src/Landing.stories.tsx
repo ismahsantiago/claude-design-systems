@@ -4,8 +4,8 @@ import { ThemeProvider } from '@ds/shared';
 import './index';
 
 /**
- * The reference landing page. Same copy and same structure in every system —
- * everything that differs between them is the tokens doing their job.
+ * The reference landing page, rendered with Cinematic Dark Cobalt. Compare it against
+ * cinematic-dark — every difference you see is this variant's token overrides.
  */
 const meta = {
   title: 'Landing page',
@@ -15,15 +15,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Light: Story = {
-  render: () => (
-    <ThemeProvider theme="light" fullBleed>
-      <LandingDemo />
-    </ThemeProvider>
-  ),
-};
-
-export const Dark: Story = {
+export const Default: Story = {
   render: () => (
     <ThemeProvider theme="dark" fullBleed>
       <LandingDemo />

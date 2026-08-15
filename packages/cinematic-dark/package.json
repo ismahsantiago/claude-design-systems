@@ -2,10 +2,10 @@
   "name": "@ds/cinematic-dark",
   "version": "0.1.0",
   "private": true,
-  "description": "Film-grade dark UI, oversized display type, gradient accents, media-first.",
+  "description": "Ember on pure black: oversized wide-grotesque display type, warm gradients, media-first.",
   "designSystem": {
     "title": "Cinematic Dark",
-    "tagline": "Film-grade dark UI, oversized display type, gradient accents, media-first."
+    "tagline": "Ember on pure black: oversized wide-grotesque display type, warm gradients, media-first."
   },
   "type": "module",
   "sideEffects": [

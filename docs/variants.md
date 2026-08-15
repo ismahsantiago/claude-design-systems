@@ -1,6 +1,6 @@
 # Variants
 
-A **variant** inherits a base system whole and restates only its expressive surface — colour, gradients, faces, radius, display scale. `@ds/nocturne-cobalt` is the worked example: eleven lines of intent on top of `@ds/nocturne`.
+A **variant** inherits a base system whole and restates only its expressive surface — colour, gradients, faces, radius, display scale. `@ds/cinematic-dark-cobalt` is the worked example: eleven lines of intent on top of `@ds/cinematic-dark`.
 
 This exists for a specific loop:
 
@@ -15,7 +15,7 @@ Each approved iteration becomes a real, buildable system in the list, rather tha
 
 ```bash
 npm run new-variant -- <base> <name> ["Display Title"] ["Tagline"]
-npm run new-variant -- nocturne nocturne-cobalt "Nocturne Cobalt" "Cold blue on black."
+npm run new-variant -- cinematic-dark cinematic-dark-cobalt "Cinematic Dark Cobalt" "Cold blue on black."
 npm install
 ```
 
@@ -23,7 +23,7 @@ The generated `theme.css` `@import`s the base and lists the 25 expressive tokens
 
 Then the actual work: **delete every line you are not changing.**
 
-That instruction is the whole discipline. A variant that repeats its base is not merely noisy — it stops tracking the base. Restate `--ds-section-gap` at the same value it already has, and the day someone retunes the rhythm in `nocturne`, every variant that copied it silently keeps the old number.
+That instruction is the whole discipline. A variant that repeats its base is not merely noisy — it stops tracking the base. Restate `--ds-section-gap` at the same value it already has, and the day someone retunes the rhythm in `cinematic-dark`, every variant that copied it silently keeps the old number.
 
 ## What is inherited, and what is not
 
@@ -40,7 +40,7 @@ The expressive surface is defined in `EXPRESSIVE_TOKENS` in `packages/shared/con
 
 Spacing and control heights are absent on purpose. Moving those makes a different *system*, not a variant of one — and it puts the variant on a path where it drifts out of sync for no gain. If you find yourself wanting them, run `new-system` instead.
 
-Rules are never restated. A variant gets the base's pill buttons, its gradient-clipped headlines and its focus glow unchanged. That is what keeps a family looking like a family: `nocturne` and `nocturne-cobalt` produce pages with an identical silhouette, differing only in temperature.
+Rules are never restated. A variant gets the base's pill buttons, its gradient-clipped headlines and its focus glow unchanged. That is what keeps a family looking like a family: `cinematic-dark` and `cinematic-dark-cobalt` produce pages with an identical silhouette, differing only in temperature.
 
 ## How the cascade works
 
