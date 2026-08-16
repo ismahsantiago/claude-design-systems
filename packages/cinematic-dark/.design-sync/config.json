@@ -1,0 +1,10 @@
+{
+  "projectId": "9a5db786-52e1-41c0-a04c-352e833afa69",
+  "pkg": "@ds/cinematic-dark",
+  "globalName": "CinematicDark",
+  "shape": "storybook",
+  "storybookConfigDir": ".storybook",
+  "storybookStatic": ".design-sync/sb-reference",
+  "entry": "dist/index.js",
+  "buildCmd": "npm run build"
+}

@@ -9,8 +9,10 @@ storybook-static/
 CLAUDE.md
 docs/
 
-# Claude Design sync state: project ids and per-repo notes.
-.design-sync/
+# Claude Design sync state. config.json MUST be committed: it pins each package
+# to its Claude Design project, and losing it makes the next sync create a
+# duplicate and orphan the original. Only the free-text notes stay private.
+.design-sync/NOTES.md
 
 # Editor and OS
 .idea/
@@ -41,3 +43,13 @@ tmp/
 npm-debug.log*
 .eslintcache
 coverage/
+
+# design-sync working state. Per package, because this monorepo holds several
+# design systems and each needs its own project pin. Only the durable set is
+# committed: config.json, NOTES.md, conventions.md, previews/, overrides/.
+**/.design-sync/sb-reference/
+**/.design-sync/learnings/
+**/.design-sync/.cache/
+**/.design-sync/node_modules
+**/.ds-sync/
+**/ds-bundle/
