@@ -76,12 +76,12 @@ export function buildCoverageTree(DS) {
         },
       ],
     }),
-    h(DS.FAQ, {
+    h(DS.FAQSection, {
       title: 'FAQ',
       defaultOpen: 0,
       items: [{ question: 'Why?', answer: 'Because.' }],
     }),
-    h(DS.CTA, {
+    h(DS.CTASection, {
       headline: 'Start now',
       subhead: 'Copy.',
       actions: button,

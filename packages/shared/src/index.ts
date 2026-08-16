@@ -79,10 +79,10 @@ export { Testimonials } from './sections/Testimonials/Testimonials';
 export type { TestimonialsProps, Testimonial } from './sections/Testimonials/Testimonials';
 export { Pricing } from './sections/Pricing/Pricing';
 export type { PricingProps, PricingPlan } from './sections/Pricing/Pricing';
-export { FAQ } from './sections/FAQ/FAQ';
-export type { FAQProps, FAQItem } from './sections/FAQ/FAQ';
-export { CTA } from './sections/CTA/CTA';
-export type { CTAProps } from './sections/CTA/CTA';
+export { FAQSection } from './sections/FAQSection/FAQSection';
+export type { FAQSectionProps, FAQItem } from './sections/FAQSection/FAQSection';
+export { CTASection } from './sections/CTASection/CTASection';
+export type { CTASectionProps } from './sections/CTASection/CTASection';
 export { Footer } from './sections/Footer/Footer';
 export type { FooterProps, FooterColumn } from './sections/Footer/Footer';
 

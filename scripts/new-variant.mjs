@@ -124,7 +124,7 @@ const packageJson = `${JSON.stringify(
     description: tagline,
     designSystem: { title, tagline, variantOf: base },
     type: 'module',
-    sideEffects: ['**/*.css'],
+    sideEffects: true,
     main: './dist/index.cjs',
     module: './dist/index.js',
     types: './dist/index.d.ts',

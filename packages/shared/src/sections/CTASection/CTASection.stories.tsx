@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { CTA } from './CTA';
+import { CTASection } from './CTASection';
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 import { Stack } from '../../components/Stack/Stack';
 
 const meta = {
-  title: 'Sections/CTA',
-  component: CTA,
+  title: 'Sections/CTASection',
+  component: CTASection,
   args: {
     headline: 'Start with the boring parts done',
     subhead: 'Create an account and have a themed, accessible page running in under ten minutes.',
@@ -18,7 +18,7 @@ const meta = {
     tone: { control: 'inline-radio', options: ['default', 'sunken', 'accent', 'inverted'] },
     align: { control: 'inline-radio', options: ['center', 'split'] },
   },
-} satisfies Meta<typeof CTA>;
+} satisfies Meta<typeof CTASection>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

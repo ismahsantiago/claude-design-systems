@@ -20,8 +20,8 @@ import { FeatureGrid } from '../sections/FeatureGrid/FeatureGrid';
 import { MediaShowcase } from '../sections/MediaShowcase/MediaShowcase';
 import { Testimonials } from '../sections/Testimonials/Testimonials';
 import { Pricing } from '../sections/Pricing/Pricing';
-import { FAQ } from '../sections/FAQ/FAQ';
-import { CTA } from '../sections/CTA/CTA';
+import { FAQSection } from '../sections/FAQSection/FAQSection';
+import { CTASection } from '../sections/CTASection/CTASection';
 import { Footer } from '../sections/Footer/Footer';
 
 function Glyph({ path }: { path: string }) {
@@ -249,9 +249,9 @@ export function LandingDemo() {
         tone="sunken"
       />
 
-      <FAQ id="faq" title="Questions, answered" items={FAQS} defaultOpen={0} />
+      <FAQSection id="faq" title="Questions, answered" items={FAQS} defaultOpen={0} />
 
-      <CTA
+      <CTASection
         headline="Start with the boring parts done"
         subhead="Create an account and have a themed, accessible page running in under ten minutes."
         actions={

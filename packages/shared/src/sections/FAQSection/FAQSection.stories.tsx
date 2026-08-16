@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { FAQ } from './FAQ';
+import { FAQSection } from './FAQSection';
 
 const ITEMS = [
   {
@@ -25,15 +25,15 @@ const ITEMS = [
 ];
 
 const meta = {
-  title: 'Sections/FAQ',
-  component: FAQ,
+  title: 'Sections/FAQSection',
+  component: FAQSection,
   args: {
     title: 'Questions, answered',
     items: ITEMS,
     defaultOpen: 0,
     tone: 'default',
   },
-} satisfies Meta<typeof FAQ>;
+} satisfies Meta<typeof FAQSection>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -51,7 +51,7 @@ export const AllCollapsed: Story = {
 
 export const WithFullHeader: Story = {
   args: {
-    eyebrow: 'FAQ',
+    eyebrow: 'FAQSection',
     title: 'Before you ask',
     subtitle: 'The four questions every evaluation starts with.',
   },

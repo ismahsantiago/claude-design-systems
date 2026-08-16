@@ -99,7 +99,7 @@ const packageJson = `${JSON.stringify(
     description: tagline,
     designSystem: { title, tagline },
     type: 'module',
-    sideEffects: ['**/*.css'],
+    sideEffects: true,
     main: './dist/index.cjs',
     module: './dist/index.js',
     types: './dist/index.d.ts',
@@ -174,7 +174,7 @@ export default config;
 const storybookPreview = `import type { Decorator, Preview } from '@storybook/react-vite';
 import { ThemeProvider } from '@ds/shared';
 import type { ThemePreference } from '@ds/shared';
-import '../src/theme.css';
+import '../src/index';
 
 /**
  * Every story renders inside a ThemeProvider. Without one there is no
