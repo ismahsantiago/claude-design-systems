@@ -1,4 +1,5 @@
 {
+  "projectId": "14eaa21e-caf0-4909-a0ce-86188796daf8",
   "pkg": "@ds/story-telling",
   "globalName": "StoryTelling",
   "shape": "storybook",
@@ -15,6 +16,7 @@
   },
   "titleMap": {
     "Landingpage": null,
+    "Storylanding": null,
     "Tokens": null
   },
   "overrides": {
@@ -33,6 +35,18 @@
     "MediaShowcase": {
       "cardMode": "column",
       "viewport": "1200x1200"
+    },
+    "MetricStrip": {
+      "cardMode": "column",
+      "viewport": "1200x1000"
+    },
+    "Pricing": {
+      "cardMode": "column",
+      "viewport": "1200x2400"
+    },
+    "StorySteps": {
+      "cardMode": "column",
+      "viewport": "1200x1500"
     },
     "Nav": {
       "cardMode": "column"

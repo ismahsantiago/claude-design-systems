@@ -36,11 +36,12 @@ For layout glue, use the contract tokens: `--ds-color-*`, `--ds-space-*`,
 
 ### Content is external to the system
 
-Read `landing-content.md` before writing copy. It is the source of truth for
-the brand, audience, claims, metrics, URLs, assets, and chapter content. Never
-invent a metric, customer, testimonial, logo, or outcome. If a field is missing,
-keep `[TODO]` or ask for the source instead of turning a placeholder into a
-claim.
+Never invent a metric, customer, testimonial, logo, or outcome. If the brief
+does not supply a fact, ask for the source or leave a visible placeholder —
+never turn a placeholder into a claim.
+
+(The repo's `landing-content.md` is the source of truth when building in-repo;
+it is deliberately not bound to this project.)
 
 ### Visual rules
 
