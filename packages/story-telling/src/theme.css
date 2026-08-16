@@ -1,0 +1,129 @@
+/**
+ * Story-Telling — editorial freight and operations journeys.
+ *
+ * Warm paper, near-black ink, signal blue, rare safety orange, condensed
+ * display type, hard editorial rules, and generous chapter spacing. Every
+ * value answers a token in @ds/shared/contract; structure remains shared.
+ */
+
+@import '@ds/shared/fonts/archivo.css';
+@import '@ds/shared/fonts/inter.css';
+@import '@ds/shared/fonts/jetbrains-mono.css';
+
+:root,
+[data-ds-theme='light'] {
+  color-scheme: light;
+
+  --ds-color-bg: #f4f3ee;
+  --ds-color-surface: #ffffff;
+  --ds-color-surface-sunken: #e9e8e2;
+  --ds-color-surface-hover: #deded7;
+  --ds-color-border: rgb(14 17 22 / 0.16);
+  --ds-color-border-strong: #0e1116;
+
+  --ds-color-text: #0e1116;
+  --ds-color-text-muted: #68717d;
+  --ds-color-text-on-accent: #ffffff;
+
+  --ds-color-accent: #2447ff;
+  --ds-color-accent-hover: #092c68;
+  --ds-color-accent-active: #061d46;
+  --ds-color-accent-subtle: #dfe5ff;
+  --ds-color-accent-text: #092c68;
+
+  --ds-color-success: #176b45;
+  --ds-color-success-subtle: #dcece1;
+  --ds-color-success-text: #14512e;
+  --ds-color-warning: #8a6a12;
+  --ds-color-warning-subtle: #f6eccd;
+  --ds-color-warning-text: #6b5210;
+  --ds-color-danger: #b33a2f;
+  --ds-color-danger-hover: #8c1e12;
+  --ds-color-danger-subtle: #fbe7e3;
+  --ds-color-danger-text: #8c1e12;
+  --ds-color-focus-ring: #f26a21;
+  --ds-color-overlay: rgb(14 17 22 / 0.55);
+
+  --ds-space-none: 0;
+  --ds-space-2xs: 4px;
+  --ds-space-xs: 8px;
+  --ds-space-sm: 12px;
+  --ds-space-md: 16px;
+  --ds-space-lg: 24px;
+  --ds-space-xl: 32px;
+  --ds-space-2xl: 48px;
+  --ds-space-3xl: 96px;
+
+  --ds-section-gap: clamp(80px, 12vw, 180px);
+  --ds-container-width: 1280px;
+
+  --ds-radius-sm: 0;
+  --ds-radius-md: 2px;
+  --ds-radius-lg: 4px;
+  --ds-radius-full: 999px;
+
+  --ds-font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --ds-font-display: 'Archivo', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+  --ds-font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --ds-text-xs: 0.6875rem;
+  --ds-text-sm: 0.8125rem;
+  --ds-text-md: 1.125rem;
+  --ds-text-lg: 1.375rem;
+  --ds-text-xl: 2.25rem;
+  --ds-text-2xl: 3.5rem;
+  --ds-text-3xl: 5.5rem;
+  --ds-text-display: clamp(3.5rem, 11vw, 10rem);
+  --ds-leading-tight: 0.9;
+  --ds-leading-normal: 1.45;
+  --ds-leading-loose: 1.7;
+  --ds-tracking-display: -0.06em;
+  --ds-font-display-settings: 'wdth' 75, 'wght' 700;
+  --ds-weight-regular: 400;
+  --ds-weight-medium: 500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold: 700;
+
+  --ds-gradient-accent: linear-gradient(135deg, #092c68 0%, #2447ff 100%);
+  --ds-gradient-warm: linear-gradient(135deg, #0e1116 0%, #68717d 100%);
+
+  --ds-shadow-sm: none;
+  --ds-shadow-md: none;
+  --ds-shadow-lg: 0 24px 64px rgb(14 17 22 / 0.14);
+  --ds-shadow-glow: 0 0 0 4px rgb(242 106 33 / 0.18);
+  --ds-duration-fast: 180ms;
+  --ds-duration-md: 700ms;
+  --ds-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --ds-control-height-sm: 36px;
+  --ds-control-height-md: 48px;
+  --ds-control-height-lg: 60px;
+}
+
+[data-ds-theme='dark'] {
+  color-scheme: dark;
+  --ds-color-bg: #0e1116;
+  --ds-color-surface: #171b22;
+  --ds-color-surface-sunken: #080a0d;
+  --ds-color-surface-hover: #242b35;
+  --ds-color-border: rgb(255 255 255 / 0.22);
+  --ds-color-border-strong: #ffffff;
+  --ds-color-text: #ffffff;
+  --ds-color-text-muted: #b0b7c0;
+  --ds-color-text-on-accent: #ffffff;
+  --ds-color-accent: #2447ff;
+  --ds-color-accent-hover: #4564ff;
+  --ds-color-accent-active: #7890ff;
+  --ds-color-accent-subtle: #10215c;
+  --ds-color-accent-text: #9eafff;
+  --ds-color-success-subtle: #0d3021;
+  --ds-color-success-text: #83d0a7;
+  --ds-color-warning-subtle: #3b2c08;
+  --ds-color-warning-text: #f0c168;
+  --ds-color-danger: #ff7569;
+  --ds-color-danger-hover: #ff9a91;
+  --ds-color-danger-subtle: #431713;
+  --ds-color-danger-text: #ffaaa3;
+  --ds-color-focus-ring: #f26a21;
+  --ds-color-overlay: rgb(0 0 0 / 0.78);
+  --ds-shadow-lg: 0 24px 64px rgb(0 0 0 / 0.42);
+}

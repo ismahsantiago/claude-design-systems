@@ -1,0 +1,116 @@
+/*
+ * Deliberately asymmetric: the media column is wider than the copy column, so
+ * a page of chapters never reads as a row of equal boxes. Alternating
+ * `mediaSide` between chapters is what gives a scroll narrative its rhythm.
+ */
+.ds-story-chapter__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--ds-space-3xl);
+  align-items: start;
+}
+
+.ds-story-chapter--media-start .ds-story-chapter__grid {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+}
+
+.ds-story-chapter--media-start .ds-story-chapter__copy {
+  order: 2;
+}
+
+.ds-story-chapter--media-start .ds-story-chapter__media {
+  order: 1;
+}
+
+.ds-story-chapter__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-lg);
+  min-width: 0;
+}
+
+.ds-story-chapter__copy--sticky {
+  position: sticky;
+  top: var(--ds-space-3xl);
+}
+
+.ds-story-chapter__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-sm);
+  margin: 0;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ds-color-text-muted);
+}
+
+.ds-story-chapter__index {
+  color: var(--ds-color-accent-text);
+}
+
+.ds-story-chapter__title {
+  margin: 0;
+  font-family: var(--ds-font-display);
+  font-variation-settings: var(--ds-font-display-settings);
+  font-size: var(--ds-text-2xl);
+  font-weight: var(--ds-weight-bold);
+  line-height: var(--ds-leading-tight);
+  letter-spacing: var(--ds-tracking-display);
+  color: var(--ds-color-text);
+  text-wrap: balance;
+}
+
+.ds-story-chapter__body {
+  font-size: var(--ds-text-md);
+  line-height: var(--ds-leading-loose);
+  color: var(--ds-color-text-muted);
+  text-wrap: pretty;
+}
+
+.ds-story-chapter__body > * + * {
+  margin-block-start: var(--ds-space-md);
+}
+
+.ds-story-chapter__action {
+  margin-block-start: var(--ds-space-sm);
+}
+
+.ds-story-chapter__media {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.ds-story-chapter__media img,
+.ds-story-chapter__media video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+ * Copy first on narrow screens whatever `mediaSide` says: the visual supports
+ * the words, so the words must not arrive second in reading order.
+ */
+@media (max-width: 900px) {
+  .ds-story-chapter__grid,
+  .ds-story-chapter--media-start .ds-story-chapter__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--ds-space-2xl);
+  }
+  .ds-story-chapter--media-start .ds-story-chapter__copy,
+  .ds-story-chapter--media-start .ds-story-chapter__media {
+    order: 0;
+  }
+}
+
+/*
+ * A pinned column taller than the viewport traps the reader between the copy
+ * and the scrollbar, so pinning is dropped on short screens entirely.
+ */
+@media (max-height: 700px), (max-width: 900px) {
+  .ds-story-chapter__copy--sticky {
+    position: static;
+  }
+}

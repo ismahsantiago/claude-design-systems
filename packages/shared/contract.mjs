@@ -217,4 +217,4 @@ export const EXPRESSIVE_TOKENS = [
 ];
 
 export const LOCALLY_SCOPED =
-  /^--ds-(card-padding|badge-|alert-|section-bg|section-fg|pricing-count)/;
+  /^--ds-(card-padding|badge-|alert-|section-bg|section-fg|pricing-count|metric-columns)/;

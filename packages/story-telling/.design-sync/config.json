@@ -1,0 +1,57 @@
+{
+  "pkg": "@ds/story-telling",
+  "globalName": "StoryTelling",
+  "shape": "storybook",
+  "storybookConfigDir": ".storybook",
+  "storybookStatic": ".design-sync/sb-reference",
+  "entry": "dist/index.js",
+  "buildCmd": "npm run build",
+  "provider": {
+    "component": "ThemeProvider",
+    "props": {
+      "theme": "light",
+      "fullBleed": true
+    }
+  },
+  "titleMap": {
+    "Landingpage": null,
+    "Tokens": null
+  },
+  "overrides": {
+    "Button": {
+      "cardMode": "column"
+    },
+    "FeatureGrid": {
+      "cardMode": "column",
+      "viewport": "1200x1200"
+    },
+    "Hero": {
+      "cardMode": "column",
+      "viewport": "1200x1000",
+      "primaryStory": "Centered"
+    },
+    "MediaShowcase": {
+      "cardMode": "column",
+      "viewport": "1200x1200"
+    },
+    "Nav": {
+      "cardMode": "column"
+    },
+    "SectionHeader": {
+      "cardMode": "column"
+    },
+    "Testimonials": {
+      "cardMode": "column",
+      "viewport": "1200x1200"
+    },
+    "FAQSection": {
+      "cardMode": "column",
+      "viewport": "1200x1200"
+    },
+    "CTASection": {
+      "cardMode": "column",
+      "viewport": "1200x1200"
+    }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}

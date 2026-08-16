@@ -1,0 +1,84 @@
+/**
+ * Story-Telling rules, not token values.
+ *
+ * The shared contract owns values. These selectors only express the editorial
+ * rules that cannot be represented by one custom property: hairlines, chapter
+ * markers, wide display treatment, and the route-like motion cue.
+ */
+
+.ds-root {
+  overflow-x: clip;
+}
+
+.ds-root :where(.ds-nav, .ds-section, .ds-footer) {
+  border-radius: 0;
+}
+
+.ds-root :where(.ds-hero__headline, .ds-section-header__title, .ds-cta__headline) {
+  max-width: 11ch;
+  text-transform: uppercase;
+}
+
+.ds-root :where(.ds-hero__headline, .ds-section-header__title, .ds-cta__headline) {
+  font-variation-settings: var(--ds-font-display-settings);
+}
+
+.ds-root :where(.ds-section-header, .ds-hero__copy) {
+  position: relative;
+}
+
+.ds-root :where(.ds-section-header__eyebrow, .ds-hero__eyebrow, .ds-cta__eyebrow) {
+  font-family: var(--ds-font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ds-root :where(.ds-feature, .ds-media-tile, .ds-testimonial, .ds-plan) {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.ds-root :where(.ds-feature, .ds-media-tile, .ds-testimonial, .ds-plan)::before {
+  background: var(--ds-color-accent);
+}
+
+.ds-root :where(.ds-button, .ds-input, .ds-textarea, .ds-select, .ds-card) {
+  border-radius: var(--ds-radius-md);
+}
+
+.ds-root :where(.ds-button) {
+  font-family: var(--ds-font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ds-root :where(.ds-button):hover {
+  transform: translateY(-2px);
+}
+
+.ds-root :where(.ds-section--accent, .ds-section--inverted) {
+  position: relative;
+}
+
+.ds-root :where(.ds-section--accent, .ds-section--inverted)::after {
+  position: absolute;
+  inset: auto var(--ds-space-lg) var(--ds-space-lg) auto;
+  width: 18vw;
+  max-width: 240px;
+  height: 1px;
+  background: currentColor;
+  content: '';
+  opacity: 0.35;
+}
+
+@media (max-width: 700px) {
+  .ds-root :where(.ds-hero__headline, .ds-section-header__title, .ds-cta__headline) {
+    max-width: 12ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-root :where(.ds-button):hover {
+    transform: none;
+  }
+}

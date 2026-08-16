@@ -76,6 +76,32 @@ export function buildCoverageTree(DS) {
         },
       ],
     }),
+    h(DS.StorySteps, {
+      eyebrow: '03 / Route',
+      title: 'Route',
+      steps: [
+        { label: 'Intake', owner: 'Operator', description: 'Desc.', outcome: 'Outcome.' },
+        { label: 'Transit', description: 'Desc.' },
+      ],
+    }),
+    h(DS.StorySteps, { layout: 'column', steps: [{ label: 'Only', description: 'Desc.' }] }),
+    h(DS.MetricStrip, {
+      eyebrow: '05 / Evidence',
+      title: 'Evidence',
+      metrics: [
+        { value: '98%', label: 'On time', footnote: 'Sample data' },
+        { value: '11', label: 'Countries' },
+      ],
+    }),
+    h(DS.StoryChapter, {
+      index: '04',
+      eyebrow: 'Control',
+      title: 'Chapter title',
+      media: h('div', null, 'media'),
+      mediaSide: 'start',
+      sticky: true,
+      action: button,
+    }, h('p', null, 'Body copy.')),
     h(DS.FAQSection, {
       title: 'FAQ',
       defaultOpen: 0,
