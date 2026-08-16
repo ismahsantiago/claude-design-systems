@@ -63,5 +63,6 @@
       "cardMode": "column",
       "viewport": "1200x1200"
     }
-  }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
 }

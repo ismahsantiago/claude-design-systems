@@ -67,6 +67,13 @@
   story; the preview panel is a fixed card. Tall stories (Section "Tones",
   Stack "Gap Scale", the sections generally) legitimately cut off at the frame
   edge. Judge what is in frame.
+- **[GENERAL] An elevated component's shadow shows on the preview panel and not
+  on storybook's.** The preview canvas does not fill the capture viewport, so
+  the shadow lands on the page ground instead of full-bleed black. Framing, not
+  a defect — expect it on Card, Hero, Pricing, Testimonials, Nav.
+- **[GENERAL] Tall sections frame off the tail of a long story** (footnotes, the
+  last card's body) while storybook shrinks to fit the whole flow. Judge what is
+  in frame; no override is warranted.
 - **A "Light" story rendering dark is CORRECT** — this system has no light mode.
 
 ## Real design bugs found while grading (not sync defects)
@@ -75,6 +82,10 @@
   panels. `--ds-text-3xl` at 5.5rem is too large for a word-length price. Needs
   a design fix in `@ds/shared` (a smaller price size when the value is not
   numeric), not a sync fix.
+- **CTASection `Inverted`: the gradient-clipped headline sat on the ember fill**,
+  making it nearly illegible. FIXED in `src/overrides.css` — the clip is now
+  disabled inside `.ds-section--inverted`, restoring both `color` and
+  `-webkit-text-fill-color`.
 - **FeatureGrid "Cards": the fourth card's body text clips** at the frame edge
   even at 1200x1200. Accepted as `close`.
 

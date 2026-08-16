@@ -9,10 +9,12 @@ storybook-static/
 CLAUDE.md
 docs/
 
-# Claude Design sync state. config.json MUST be committed: it pins each package
-# to its Claude Design project, and losing it makes the next sync create a
-# duplicate and orphan the original. Only the free-text notes stay private.
-.design-sync/NOTES.md
+# Claude Design sync state. The durable set — config.json, NOTES.md,
+# conventions.md, previews/, overrides/ — IS committed: config.json pins each
+# package to its project (losing it makes the next sync create a duplicate and
+# orphan the original), and the rest is what makes a re-sync fast instead of a
+# re-derivation. Only build artefacts and verification scratch are ignored,
+# below.
 
 # Editor and OS
 .idea/
