@@ -21,6 +21,7 @@ Each renders the **same landing page with the same copy**, so everything that di
 | `@ds/cinematic-dark` | Creator tool / film | Pure black, ember→violet gradients, wide grotesque display to 132px |
 | `@ds/cinematic-dark-cobalt` | *variant* | The same system at midnight: cobalt accents, cooled neutrals, everything else inherited |
 | `@ds/ref-cinematic-dark` | *reference study* | Built to a brief written after a public creator-tools site. Kept for comparison, not to build on |
+| `@ds/story-telling` | Editorial freight / operations | Warm paper, near-black ink, signal blue, condensed display type, and a six-chapter scroll narrative |
 
 ## Naming
 
@@ -98,3 +99,16 @@ All five are failure modes that are invisible in review and obvious in productio
 `/design-sync`, run from a package directory, uploads that system to [claude.ai/design](https://claude.ai/design) so the design agent builds pages from its real components. One system per project — a project holding two would give the design agent two conflicting answers for every token.
 
 The build is already shaped for it: `@ds/shared` is bundled rather than external so each system ships its own compiled components, all CSS collapses into one `dist/styles.css`, and `vite-plugin-dts` emits one `.d.ts` per component with an exported `<Name>Props`.
+
+## Agent-ready landing briefs
+
+`@ds/story-telling` also carries the portable inputs needed by agents that do
+not use Claude Design: `DESIGN.md` describes the visual and composition
+contract, while `landing-content.md` holds the real brand copy, URLs, claims,
+metrics, permissions, and asset references. Keep the content file separate from
+the system so the same design base can generate multiple landing pages without
+forking tokens or components.
+
+```bash
+npm run validate-content -- packages/story-telling/landing-content.md
+```

@@ -2,15 +2,13 @@
   "name": "@ds/consumer-warm",
   "version": "0.1.0",
   "private": true,
-  "description": "Earthy palette, generous curves, soft shadows — a product that feels friendly.",
+  "description": "Earthy palette, generous curves, soft shadows \u2014 a product that feels friendly.",
   "designSystem": {
     "title": "Consumer Warm",
-    "tagline": "Earthy palette, generous curves, soft shadows — a product that feels friendly."
+    "tagline": "Earthy palette, generous curves, soft shadows \u2014 a product that feels friendly."
   },
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": true,
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

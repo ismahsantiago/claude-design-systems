@@ -1,0 +1,82 @@
+/**
+ * Scroll narrative for the `story-telling` page type.
+ *
+ * Built on `animation-timeline: view()` rather than IntersectionObserver, for
+ * one reason that matters more than elegance: **the default state is visible.**
+ * Everything below only ever runs inside `@supports`, so a browser without
+ * scroll-driven animations, a reader with `prefers-reduced-motion`, and a page
+ * with JavaScript disabled all get the same thing — the whole narrative,
+ * legible, in order. Motion is added to a working page; it is never what makes
+ * the page work.
+ *
+ * DESIGN.md: chapter transitions 600–900ms fade/translate, plus a route-line
+ * draw. Nothing here pins, hides or gates content behind an interaction.
+ */
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /*
+     * Chapters arrive as the reader reaches them. `both` keeps the settled
+     * state after the range ends, so a chapter never fades back out once read.
+     */
+    .ds-story-chapter .ds-story-chapter__copy,
+    .ds-story-chapter .ds-story-chapter__media,
+    .ds-metric-strip .ds-metric,
+    .ds-story-steps .ds-story-step {
+      animation: st-arrive linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 26%;
+    }
+
+    /*
+     * The route steps arrive in sequence rather than together, so the eye
+     * reads them as an order. The delay is expressed as a range offset because
+     * animation-delay does not apply on a scroll timeline.
+     */
+    .ds-story-steps .ds-story-step:nth-child(2) {
+      animation-range: entry 14% cover 30%;
+    }
+    .ds-story-steps .ds-story-step:nth-child(3) {
+      animation-range: entry 18% cover 34%;
+    }
+    .ds-story-steps .ds-story-step:nth-child(4) {
+      animation-range: entry 22% cover 38%;
+    }
+
+    /* The hero route draws itself once, as the first thing the page does. */
+    .st-route {
+      stroke-dasharray: 2400;
+      animation: st-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 60%;
+    }
+  }
+}
+
+@keyframes st-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes st-draw {
+  from {
+    stroke-dashoffset: 2400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/*
+ * Not animation, but the same intent: the nav bar earns a rule and a surface
+ * only once there is content behind it to separate from.
+ */
+.ds-root .ds-nav--sticky {
+  backdrop-filter: blur(8px);
+}

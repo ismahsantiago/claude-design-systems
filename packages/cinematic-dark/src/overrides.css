@@ -83,6 +83,40 @@
   padding-block-end: 0.08em;
 }
 
+/*
+ * ...except on an inverted band, where the page itself IS the accent fill.
+ * Clipping the accent gradient onto text that sits on the accent leaves the
+ * headline nearly invisible. Both `color` and `-webkit-text-fill-color` have
+ * to be restored — background-clip:text needs the fill cleared, not just the
+ * colour. Found by grading CTASection's Inverted story.
+ */
+.ds-section--inverted .ds-hero__headline,
+.ds-section--inverted .ds-cta__headline {
+  background: none;
+  color: var(--ds-color-text-on-accent);
+  -webkit-text-fill-color: var(--ds-color-text-on-accent);
+}
+
+/*
+ * Same problem one level down: on an inverted band the accent IS the ground, so
+ * a primary button filled with the accent vanishes into it and only its label
+ * survives. Invert the button too — dark pill, accent label.
+ */
+.ds-section--inverted .ds-button--primary {
+  background: var(--ds-color-text-on-accent);
+  color: var(--ds-color-accent);
+}
+
+.ds-section--inverted .ds-button--primary:hover:not(:disabled) {
+  background: var(--ds-color-bg);
+  box-shadow: none;
+}
+
+.ds-section--inverted .ds-button--secondary {
+  border-color: var(--ds-color-text-on-accent);
+  color: var(--ds-color-text-on-accent);
+}
+
 /* ---------------------------------------------------------------------------
  * Focus glow on inputs.
  * Not a token: `--ds-shadow-glow` supplies the value; attaching it to the

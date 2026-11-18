@@ -2,14 +2,14 @@ import type { ReactNode } from 'react';
 import { Section } from '../../components/Section/Section';
 import { Stack } from '../../components/Stack/Stack';
 import { SectionHeader } from '../SectionHeader/SectionHeader';
-import './FAQ.css';
+import './FAQSection.css';
 
 export interface FAQItem {
   question: ReactNode;
   answer: ReactNode;
 }
 
-export interface FAQProps {
+export interface FAQSectionProps {
   eyebrow?: ReactNode;
   title?: ReactNode;
   subtitle?: ReactNode;
@@ -27,7 +27,7 @@ export interface FAQProps {
  * Built on native `<details>`, so it works with no JavaScript, is keyboard
  * operable and is announced correctly — all for free.
  */
-export function FAQ({
+export function FAQSection({
   eyebrow,
   title,
   subtitle,
@@ -36,7 +36,7 @@ export function FAQ({
   tone = 'default',
   id,
   className,
-}: FAQProps) {
+}: FAQSectionProps) {
   return (
     <Section id={id} tone={tone} width="prose" className={className}>
       <Stack gap="3xl">

@@ -14,6 +14,7 @@
     "build": "npm run build --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "verify": "node scripts/verify.mjs",
+    "validate-content": "node scripts/validate-content.mjs",
     "new-system": "node scripts/new-system.mjs",
     "check": "npm run typecheck && npm run build && npm run verify",
     "new-variant": "node scripts/new-variant.mjs"

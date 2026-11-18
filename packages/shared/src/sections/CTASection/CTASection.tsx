@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 import { Section } from '../../components/Section/Section';
 import { Stack } from '../../components/Stack/Stack';
-import './CTA.css';
+import './CTASection.css';
 
-export interface CTAProps {
+export interface CTASectionProps {
   headline: ReactNode;
   subhead?: ReactNode;
   /** Buttons, or an inline email-capture form. */
@@ -18,7 +18,7 @@ export interface CTAProps {
 }
 
 /** The closing ask, just above the footer. */
-export function CTA({
+export function CTASection({
   headline,
   subhead,
   actions,
@@ -27,7 +27,7 @@ export function CTA({
   align = 'center',
   id,
   className,
-}: CTAProps) {
+}: CTASectionProps) {
   const copy = (
     <Stack gap="sm" align={align === 'center' ? 'center' : 'start'}>
       <h2 className="ds-cta__headline">{headline}</h2>

@@ -1,0 +1,108 @@
+.ds-story-steps {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: ds-step;
+}
+
+.ds-story-steps--row {
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+.ds-story-steps--column {
+  grid-auto-flow: row;
+}
+
+/*
+ * The route line. Drawn as a border on the step itself rather than as an
+ * absolutely-positioned overlay: it then survives any reflow and never needs
+ * JavaScript to measure, which matters because this section is the one thing
+ * that must still read as a sequence with motion disabled.
+ */
+.ds-story-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-sm);
+  padding-inline-end: var(--ds-space-xl);
+  padding-block-start: var(--ds-space-xl);
+  border-block-start: 1px solid var(--ds-color-border);
+  min-width: 0;
+}
+
+/* The marker that sits on the line, at the start of each step. */
+.ds-story-step::before {
+  position: absolute;
+  inset-block-start: -4px;
+  inset-inline-start: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--ds-color-accent);
+  content: '';
+}
+
+.ds-story-steps--row .ds-story-step:last-child,
+.ds-story-steps--column .ds-story-step:last-child {
+  padding-inline-end: 0;
+}
+
+.ds-story-step__index {
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-xs);
+  letter-spacing: 0.14em;
+  color: var(--ds-color-accent-text);
+}
+
+.ds-story-step__label {
+  margin: 0;
+  font-family: var(--ds-font-display);
+  font-variation-settings: var(--ds-font-display-settings);
+  font-size: var(--ds-text-xl);
+  font-weight: var(--ds-weight-semibold);
+  line-height: var(--ds-leading-tight);
+  letter-spacing: var(--ds-tracking-display);
+  color: var(--ds-color-text);
+}
+
+.ds-story-step__owner {
+  margin: 0;
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ds-color-text-muted);
+}
+
+.ds-story-step__description {
+  margin: 0;
+  font-size: var(--ds-text-md);
+  line-height: var(--ds-leading-loose);
+  color: var(--ds-color-text-muted);
+  text-wrap: pretty;
+}
+
+.ds-story-step__outcome {
+  margin: 0;
+  margin-block-start: auto;
+  padding-block-start: var(--ds-space-sm);
+  font-size: var(--ds-text-sm);
+  font-weight: var(--ds-weight-medium);
+  color: var(--ds-color-text);
+}
+
+/* Below the row breakpoint the route turns vertical and the line follows. */
+@media (max-width: 900px) {
+  .ds-story-steps--row {
+    grid-auto-flow: row;
+  }
+  .ds-story-step {
+    padding-inline-end: 0;
+    padding-block-end: var(--ds-space-xl);
+  }
+  .ds-story-step:last-child {
+    padding-block-end: 0;
+  }
+}

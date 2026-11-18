@@ -8,9 +8,7 @@
     "tagline": "Dark by default, monospace accents, dense and precise."
   },
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": true,
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
